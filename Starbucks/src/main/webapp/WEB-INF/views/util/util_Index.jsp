@@ -11,6 +11,7 @@ Customer Service & Ideas | Starbucks Korea
 <link href="/common/css/style_csi.css" rel="stylesheet">
 <link href="/common/css/style_util2.css?v=190131" rel="stylesheet">
 
+<jsp:include page="../common/header_head.jsp" />
 <style type="text/css">
 
 /* 	.main_search_bg { background:url("../common/img/util/csi/main_search_bg_voc.png"); border-radius:3px; height:230px; position:relative; width:830px; } */
@@ -45,8 +46,31 @@ Customer Service & Ideas | Starbucks Korea
     /*e::20180914 추석 연휴 고객의 소리 팝업 수정*/
          
 </style>
+
+
 </head>
 <body>
+	<!-- <div class="pop_up_voc" style="display:none"></div>
+    <div class="sugNoticePop" style="display:none">
+        <div class="sugNoticePop_body">
+            <p class="sugNoticePop_close">
+                <a href="javascript:void(0);">닫기</a>
+            </p>
+            <strong class="subPopTit"></strong>
+            <div class="subPopCon">
+	            <div class="subPopBox">
+	                <ul>
+	                    <li class="subContent"></li>
+	                </ul>
+	            </div>
+	            <div class="subPopBtn">
+	                <a href="#">자주 하는 질문 바로가기</a>
+	            </div>
+	        </div>
+        </div>
+    </div> -->
+	<!-- VOC 안내팝업 -->
+	<div id="wrap">
 	<jsp:include page="../common/header.jsp" />
 		<div id="container">
 			<!-- 서브 타이틀 -->
@@ -232,6 +256,336 @@ Customer Service & Ideas | Starbucks Korea
 			</div>
 			<!-- 내용 end -->
 		</div>
+		<form name="customFrm" method="post" onsubmit="return false">
+			<input type="hidden" id="cate_cd" name="cate_cd" value="F17" /> <input
+				type="hidden" id="seq" name="seq" value="0" /> <input type="hidden"
+				id="searchKeyword" name="searchKeyword" value="" />
+		</form>
 	<jsp:include page="../common/footer.jsp" />
+			<!-- 상용 -->
+			<script type="text/x-jquery-tepl" id="webData">
+				<li>
+					<a href="/util/website_tip_view.do?status=web&seq=${seq}">
+						<figure><img alt="" src="//image.istarbucks.co.kr/upload/tip/${img_nm}"></figure>
+						<div>
+							<p>
+								<span><strong>${title}</strong></span>
+								<span>{{html $item.content()}}</span>
+							</p>
+						</div>
+					</a>
+				</li> 
+			</script>
+
+		<!-- 상용 -->
+		<script type="text/x-jquery-tepl" id="appData">
+				<li>
+					<a href="/util/website_tip_view.do?status=app&seq=${seq}">
+						<figure><img alt="" src="//image.istarbucks.co.kr/upload/tip/${img_nm}"></figure>
+						<div>
+							<p>
+								<span><strong>${title}</strong></span>
+								<span>{{html $item.content()}}</span>
+							</p>
+						</div>
+					</a>
+				</li>
+			</script>
+		<script>
+			//초기값설정
+			var page = 1;
+			var category = 'F17'
+			var searchKeyword = "";
+			var seq = 0;
+
+			$(document).ready(function() {
+				// 150604 성연욱 추가
+				$('.store-slider').each(function() {
+					$(this).swiper({
+						slidesPerView : 3,
+						calculateHeight : true
+					});
+				});
+				// 150604 성연욱 추가 end
+
+				$('#pickDate1, #pickDate2').datepicker();
+
+				var sbox = $('.my_ms_select select');
+				sbox.change(function() {
+					var sbox_name = $(this).children('option:selected').text();
+					$(this).siblings('label').text(sbox_name);
+				});
+
+				var msdcSlider = $('.my_ms_card_detail_cont ul').bxSlider({
+					pager : false,
+					slideMargin : 0
+				});
+
+				var mrSlider = $('.my_ms_rank_each ul').bxSlider({
+					pager : false,
+					slideMargin : 0
+				});
+
+				/* 구명준 추가 시작  */
+
+				// input 디자인
+				$('input[type=checkbox]').ezMark();
+
+				$('#ckAll, #ck2All').click(function() {
+					$('input:checkbox').prop('checked', this.checked).change();
+				});
+
+				$(".shopArea_right").mCustomScrollbar();
+
+				/* 구명준 끝 */
+
+				
+                
+                function fn_getSrvTime(){ //20180214 타 스토어 페이지에 대한 영향으로 분리처리
+					var xmlHttp;
+					if (window.XMLHttpRequest) {//분기하지 않으면 IE에서만 작동된다.
+						xmlHttp = new XMLHttpRequest(); // IE 7.0 이상, 크롬, 파이어폭스 등
+						xmlHttp.open('HEAD',window.location.href.toString(),false);
+						xmlHttp.setRequestHeader("Content-Type", "text/html");
+						xmlHttp.send('');
+						return new Date(xmlHttp.getResponseHeader("Date"));
+					} else if (window.ActiveXObject) {
+						xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
+						xmlHttp.open('HEAD',window.location.href.toString(),false);
+						xmlHttp.setRequestHeader("Content-Type", "text/html");
+						xmlHttp.send('');
+						return new Date(xmlHttp.getResponseHeader("Date"));
+					}
+				}
+                
+                var dEd  = new Date(2019, 2-1, 7, 9, 0, 0);
+                var today = fn_getSrvTime();
+                if (today < dEd) {
+                    $('.pop_up_dimm, .sugNoticePop').fadeIn();
+                    $('p.sugNoticePop_close a').click(function(){
+                        $('.pop_up_dimm, .sugNoticePop').fadeOut();
+                    });
+                }
+                
+                $(".subFaqBtn").on("click", function(e){
+                    location.href="/util/faq.do";
+                });
+                /*
+                Date.prototype.IsoNum = function (n) {
+                    var tzoffset = this.getTimezoneOffset() * 60000; //offset in milliseconds
+                    var localISOTime = (new Date(this - tzoffset)).toISOString().slice(0,-1);
+                    return localISOTime.replace(/[-T:\.Z]/g, '').substring(0,n || 20); // YYYYMMDD
+                };
+                
+                //Mon Oct 01 2018 00:00:00 GMT+0900 (대한민국 표준시)
+                var start_dt = new Date(2019, 1-1, 29, 0, 0, 0); //팝업노출시작날짜
+                var end_dt = new Date(2019, 2-1, 7, 9, 0, 0);  //팝업노출종료날짜
+                var par = {
+    					"start_dt" : start_dt.IsoNum(14)
+    					, "end_dt" : end_dt.IsoNum(14)
+    			};
+                
+    			___ajaxCall("/util/getServerTimeCheck.do", par , true, "json", "post", function(_response) {
+    				if(_response.result == "Y"){
+   					  $('.pop_up_dimm, .sugNoticePop').fadeIn();
+   	                    $('p.sugNoticePop_close a').click(function(){
+   	                        $('.pop_up_dimm, .sugNoticePop').fadeOut();
+   	                    });
+   	                    
+   	                    $(".subFaqBtn").on("click", function(e){
+   	                        location.href="/util/faq.do";
+   	                    });
+   	                    //console.log(_response.current_dt);
+    				}else if (_response.result == "N"){
+    					//console.log(_response.current_dt);
+    				}else{
+    					//console.log(_response.current_dt);
+    				}
+    				
+    			}, function(data) {
+//     				alert("호출실패");
+    			});
+    			*/
+                
+			});
+
+			/* 구명준 추가 */
+
+			$(function() {
+
+				content_tabmenu(); //content_tabmenu 설정					
+
+				selectbox_init(); //selectbox 디자인 설정
+
+				pop_init(); //pop_init 팝업 설정
+
+				pop_slide_init(); //pop_slide_init 슬라이드 설정
+
+				box_tabmenu(); //box_tabmenu 설정		
+
+				m_mybrink_list(); //m_mybrink_list 설정	( 나만의 음료 모바일 list )
+
+			});
+
+			function content_tabmenu() {
+
+				$(".content_tabmenu > .tab").bind(
+						"click focusin",
+						function() {
+							if (!$(this).hasClass("on")) {
+								$(this).parent().children(".on").removeClass(
+										"on");
+								var index = $(this).addClass("on").closest(
+										".content_tabmenu").children(".tab")
+										.index(this);
+								$(this).parent().children(".panel").hide().eq(
+										index).show();
+							}
+							return false;
+						});
+				$("div.finder_list > dl > dd > ul > li").bind(
+						"click focusout",
+						function() {
+							if (!$(this).hasClass("on")) {
+								$(this).parent().children(".on").removeClass(
+										"on");
+								var index = $(this).addClass("on").closest(
+										".content_tabmenu").children(".tab")
+										.index(this);
+								$(this).parent().children(".panel").hide().eq(
+										index).show();
+							}
+							return false;
+						});
+
+				$('.content_tabmenu > .tab').eq(3).click();
+
+			}
+
+			function selectbox_init() {
+
+				$(".select_box select").on(
+						"change",
+						function() {
+							$(this).prev().html(
+									$(this).find("option:selected").text());
+						}).prev().html(function() {
+					return $(this).next().find("option:selected").text();
+				});
+
+			}
+
+			function pop_init() {
+
+				$('.btn_shop_area, .btn_shop_bookmark').click(function() {
+					$('.pop_up_dimm, .shopArea_pop01').fadeIn();
+				});
+
+				$('.shopArea_pop01 p.btn_pop_close a').click(
+						function() {
+							$('.pop_up_dimm, .shopArea_pop01').fadeOut();
+
+							// 150604 성연욱 추가 - 팝업 초기화
+							$('div.box_info dl.box_tabmenu dt').removeClass(
+									'on');
+							$('div.box_info dl.box_tabmenu dd.panel').hide();
+							// 150604 성연욱 추가 - 팝업 초기화 end
+						});
+
+			}
+
+			function pop_slide_init() {
+				var mrSlider = $('.my_ms_shopArea_bar ul').bxSlider({
+					pager : false,
+					slideMargin : 0
+				});
+			}
+
+			function box_tabmenu() {
+				/* original jQuery
+				$(".box_tabmenu > .tab").bind("click ", function(){
+					if(!$(this).hasClass("on")) {
+						$(this).parent().children(".on").removeClass("on");
+						var index = $(this).addClass("on").closest(".box_tabmenu").children(".tab").index(this);
+						$(this).parent().children(".panel").hide().eq(index).show();
+					}
+					return false;
+				});
+				 */
+				// 20150604 성연욱 작업
+				$(".box_tabmenu > .tab").bind("click", function() {
+					$(this).siblings('dt').removeClass('on');
+					$(this).toggleClass('on');
+					$(this).next().siblings('dd').hide();
+					$(this).next().toggle();
+				});
+				// 20150604 성연욱 작업 end
+
+			}
+
+			function m_mybrink_list() {
+
+				//셋팅
+				$(".info dd.box").show();
+				$('dl.info dt.tbox a').text('자세히 보기');
+
+				$("dl.info dt.tbox a").bind("click", function() {
+					if ($(this).parents('dt.tbox').hasClass('on')) {
+						$(this).text('자세히 보기');
+					} else {
+						$(this).text('닫기');
+					}
+				});
+
+				$(".ms_info_box1 dt.tbox a").bind("click", function() {
+					$(".ms_info_box1").find("dd.box").each(function() {
+						if ($(this).next("dd.box")) {
+							$(this).toggle();
+							$(this).prev().toggleClass("on");
+						} else {
+							$(this).hide();
+							$(this).prev().removeClass("on");
+						}
+					});
+				});
+
+				$(".ms_info_box2 dt.tbox a").bind("click", function() {
+					$(".ms_info_box2").find("dd.box").each(function() {
+						if ($(this).next("dd.box")) {
+							$(this).toggle();
+							$(this).prev().toggleClass("on");
+						} else {
+							$(this).hide();
+							$(this).prev().removeClass("on");
+						}
+					});
+				});
+
+				$(".ms_info_box3 dt.tbox a").bind("click", function() {
+					$(".ms_info_box3").find("dd.box").each(function() {
+						if ($(this).next("dd.box")) {
+							$(this).toggle();
+							$(this).prev().toggleClass("on");
+						} else {
+							$(this).hide();
+							$(this).prev().removeClass("on");
+						}
+					});
+				});
+
+				$(".ms_info_box4 dt.tbox a").bind("click", function() {
+					$(".ms_info_box4").find("dd.box").each(function() {
+						if ($(this).next("dd.box")) {
+							$(this).toggle();
+							$(this).prev().toggleClass("on");
+						} else {
+							$(this).hide();
+							$(this).prev().removeClass("on");
+						}
+					});
+				});
+			}
+			/* 구명준 끝 */
+		</script>
 </body>
 </html>

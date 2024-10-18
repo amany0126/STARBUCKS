@@ -203,7 +203,8 @@
                 <script src="//image.istarbucks.co.kr/common/js/greensock/TweenMax.min.js"></script>
                 <script src="//image.istarbucks.co.kr/common/js/masonry.pkgd.js"></script>
                 <script src="//image.istarbucks.co.kr/common/js/common.js"></script>
-                <script src="/common/js/gnb.js?v=240902"></script>
+<!--                 <script src="/common/js/gnb.js?v=240902"></script> -->
+                <script href="https://www.starbucks.co.kr/common/js/gnb.js?v=240902/common/js/gnb.js?v=240902"></script>
                 <script src="/common/js/header.js?v=230716"></script>
                 <script src="//image.istarbucks.co.kr/common/js/footer.js?v=221122"></script>
     
@@ -527,14 +528,13 @@
                     });
                 </script>
             
-                <script src="/common/js/main_ani.js?v=221220"></script>
-                <script src="/common/js/main_prom.js?v=210929"></script>
-                <!--script src="/common/js/main_prom3.js"></script--> <!-- 20170831 삭제 -->
-                <script src="/common/js/main_teavana.js?v=20210208"></script>
-                <script src="/common/js/jquery.animateSprite.min.js"></script>
-                <script src="/common/js/jquery.cycle.all.js"></script>
                 <!-- footer end -->
             </div>
-    
+            <script src="/common/js/main_ani.js?v=221220"></script>
+            <script src="/common/js/main_prom.js?v=210929"></script>
+            <!--script src="/common/js/main_prom3.js"></script--> <!-- 20170831 삭제 -->
+            <script src="/common/js/main_teavana.js?v=20210208"></script>
+            <script src="/common/js/jquery.animateSprite.min.js"></script>
+            <script src="/common/js/jquery.cycle.all.js"></script>
             </body>
 </html>

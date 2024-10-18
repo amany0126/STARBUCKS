@@ -925,9 +925,9 @@ body .ui-tooltip {
 .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
-	border: 1px solid #e2c383f;
-	background: #e2c383 url("images/ui-bg_highlight-soft_75_ffe45c_1x100.png") 50% top repeat-x;
 	color: #222;
+	background: #e2c383 url("images/ui-bg_highlight-soft_75_ffe45c_1x100.png") 50% top repeat-x;
+	border: 1px solid #e2c383f;
 }/* 150706 수정 */
 .ui-state-highlight a,
 .ui-widget-content .ui-state-highlight a,

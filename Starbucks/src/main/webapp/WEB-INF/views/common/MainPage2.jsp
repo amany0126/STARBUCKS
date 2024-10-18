@@ -639,6 +639,8 @@
 			</div><!-- // 접근성_20171201 container 추가 -->
 
 	<jsp:include page="footer.jsp" />
+	
+  
     <script>
                 // 160902 박종현 추가 - 랜덤 노출 영역 선택
                 if ((new Date()).getTime() % 2 == 0) {

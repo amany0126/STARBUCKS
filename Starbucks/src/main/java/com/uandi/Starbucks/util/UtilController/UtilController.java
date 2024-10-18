@@ -9,4 +9,8 @@ public class UtilController {
 	public String index() {
 		return "util/util_Index";
 	}
+	@GetMapping(value = "util/faq.do")
+	public String gfapPage() {
+		return "util/util_faq";
+	}
 }
