@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.uandi.Starbucks.common.model.mapper.CommonMapper">
+	
+ 	<resultMap id="regionalClassificationResultSet" type="regionalClassification">
+		<result column="GUNGU_CODE" property="gugun_cd" />
+		<result column="SIDO_CODE" property="SidoCode" />
+		<result column="GUNGU_NAME" property="gugun_nm" />
+	</resultMap>
+ 	<resultMap id="storeLocationResultSet" type="storeLocation">
+		<result column="SIDO_CODE" property="sido_nm" />
+		<result column="GUNGU_CODE" property="gugun_nm" />
+		<result column="STORE_CD" property="store_cd" />
+		<result column="STORE_NAME" property="store_nm" />
+		<result column="STORE_ADDRESS" property="address" />
+	</resultMap>
+
+ 
+	 <select id="getGugunList" resultMap="regionalClassificationResultSet" parameterType="string" >
+			SELECT *  FROM REGIONAL_CLASSIFICATION WHERE SIDO_CODE = #{sidoCode}
+	</select>
+	 <select id="getStoreList" resultMap="storeLocationResultSet" parameterType="string" >
+			SELECT S.STORE_NAME,S.STORE_CD,S.STORE_ADDRESS,C.GUNGU_NAME AS "GUNGU_CODE", M.SIDO_NAME  AS "SIDO_CODE"
+			  FROM STORE_LOCATION S
+			  JOIN REGIONAL_CLASSIFICATION C ON (C.GUNGU_CODE = S.GUNGU_CODE)
+			  JOIN REGION_MAJOR_CATEGORIES M ON (M.SIDO_CODE = C.SIDO_CODE)
+			 WHERE S.GUNGU_CODE =  #{gugun} AND S.STORE_NAME like '%'||#{store_nm}||'%' 
+	</select>
+</mapper>

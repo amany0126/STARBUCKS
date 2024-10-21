@@ -180,7 +180,8 @@
 			</footer>
 			<!-- footer end -->
 			
-			<script src="//image.istarbucks.co.kr/common/js/jquery-1.10.2.min.js"></script>
+			<!-- <script src="//image.istarbucks.co.kr/common/js/jquery-1.10.2.min.js"></script> -->
+			<script src="https://image.istarbucks.co.kr/common/js/jquery-1.10.2.min.js"></script>
                 <script src="https://image.istarbucks.co.kr/common/js/@common.js"></script>
                 <script src="https://image.istarbucks.co.kr/common/js/jquery-ui.min.js?v=220207"></script>
                 <script src="//image.istarbucks.co.kr/common/js/idangerous.swiper-2.1.min.js"></script>
@@ -530,11 +531,11 @@
             
                 <!-- footer end -->
             </div>
-            <script src="/common/js/main_ani.js?v=221220"></script>
-            <script src="/common/js/main_prom.js?v=210929"></script>
+            <script src="https://www.starbucks.co.kr//common/js/main_ani.js?v=221220"></script>
+            <script src="https://www.starbucks.co.kr//common/js/main_prom.js?v=210929"></script>
             <!--script src="/common/js/main_prom3.js"></script--> <!-- 20170831 삭제 -->
-            <script src="/common/js/main_teavana.js?v=20210208"></script>
-            <script src="/common/js/jquery.animateSprite.min.js"></script>
-            <script src="/common/js/jquery.cycle.all.js"></script>
+            <script src="https://www.starbucks.co.kr//common/js/main_teavana.js?v=20210208"></script>
+            <script src="https://www.starbucks.co.kr//common/js/jquery.animateSprite.min.js"></script>
+            <script src="https://www.starbucks.co.kr//common/js/jquery.cycle.all.js"></script>
             </body>
 </html>

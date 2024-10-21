@@ -1001,10 +1001,10 @@
                     
                 });
             </script>
-            <script src="/common/js/inewsticker.js"></script>
+            <script src="https://www.starbucks.co.kr/common/js/inewsticker.js"></script>
             
-            <script src="/common/js/bbs/main_rolling.js"></script>
-            <script src="/common/js/main/index.js?v=200907"></script>
+            <script src="https://www.starbucks.co.kr/common/js/bbs/main_rolling.js"></script>
+            <script src="https://www.starbucks.co.kr/common/js/main/index.js?v=200907"></script>
             
             
             

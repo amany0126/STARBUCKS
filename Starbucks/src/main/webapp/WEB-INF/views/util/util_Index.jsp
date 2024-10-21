@@ -152,7 +152,8 @@ Customer Service & Ideas | Starbucks Korea
 										
 											<!-- 로그인 버튼 -->
 											<a class="btn_login" href="javascript:$.loginLib.showLayerLogin();">로그인</a>
-										
+											<a class="btn_ask" href="/customer/suggestionWrite.do">고객의
+												소리 문의하기</a>
 
 										
 
