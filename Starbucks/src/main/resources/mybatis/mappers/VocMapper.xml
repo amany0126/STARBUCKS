@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.uandi.Starbucks.voc.model.mapper.VocMapper">
+	
+ 	<resultMap id="mainCategoriesOfInquiriesResultSet" type="mainCategoriesOfInquiries">
+		<result column="CODE" property="code" />
+		<result column="CODE_NAME" property="code_NAME" />
+	</resultMap>
+ 	<resultMap id="inquiryCategoryResultSet" type="inquiryCategory">
+		<result column="MAIN_CATEGORY_CODE" property="parentCode" />
+		<result column="CATEGORY_CODE" property="code" />
+		<result column="CATEGORY_NAME" property="code_NAME" />
+	</resultMap>
+	<resultMap id="drinkProductResultSet" type="drinkProduct">
+		<result column="no_SKU" property="no_SKU" />
+		<result column="nm_CATE" property="nm_CATE" />
+		<result column="nm_CATE_FULL" property="nm_CATE_FULL" />
+		<result column="nm_PRDUCT" property="nm_PRDUCT" />
+		<result column="nm_CATE_1" property="nm_CATE_1" />
+	</resultMap>
+	 <select id="getVocDemandCodeList" resultMap="mainCategoriesOfInquiriesResultSet"  >
+			SELECT *  FROM MAIN_CATEGORIES_OF_INQUIRIES
+	</select>
+ 	<select id="getVocCauseCodeList" resultMap="inquiryCategoryResultSet"  parameterType="string" >
+			SELECT *  FROM INQUIRY_CATEGORY WHERE MAIN_CATEGORY_CODE = #{parentCode}
+	</select>
+	<select id="getVocProdCodeList" resultMap="drinkProductResultSet"  parameterType="string" >
+	SELECT P.DRINK_NO AS"no_SKU",  C.CATEGORY_NAME AS "nm_CATE",  C.CATEGORY_NAME AS "nm_CATE_FULL",P.NAME AS "nm_PRDUCT",'음료' AS "nm_CATE_1"
+			FROM DRINK_PRODUCT P
+			  JOIN DRINK_CATEGORY C ON (C.CATEGORY_ID = P.CATEGORY_ID) 
+			  WHERE NAME LIKE '%'||#{NM_PRDUCT}||'%'
+	</select>
+</mapper>
