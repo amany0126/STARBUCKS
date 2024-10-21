@@ -98,8 +98,10 @@
 				<!-- 수상내역 -->
 				<div class="footer_awards_wrap">
 					<div class="footer_awards_wrap_inner">		
+
 <!-- 					<ul class="footer_awards_slider">			<li><a taget="_blank" href="javascript:void(0);"><img alt="여섯가족부 2020 대한민국 일자리대상 여성가족부장관상" src="//image.istarbucks.co.kr/img/event/2022/footer_award_2211_01.jpg"></a></li>			<li><a taget="_blank" href="javascript:void(0);"><img alt="행정안전부 2020 소방의 날 행정안전부장관 표창" src="//image.istarbucks.co.kr/img/event/2022/footer_award_2211_02.jpg"></a></li>			<li><a taget="_blank" href="javascript:void(0);"><img alt="농림축산식품부 2020 대한민국 커피산업대상 농림축산식품부 장관상" src="//image.istarbucks.co.kr/img/event/2022/footer_award_2211_03.jpg"></a></li>			<li><a taget="_blank" href="javascript:void(0);"><img alt="산업통상자원부 2020 대한민국 중소중견기업혁신 대상 국회산업통상자원중소벤처위원회장상" src="//image.istarbucks.co.kr/img/event/2022/footer_award_2211_04.jpg"></a></li>			<li><a taget="_blank" href="javascript:void(0);"><img alt="일자리위원회 2020 대한민국 일자리 유공 표창 대통령직속 일자리위원회 부위원장상" src="//image.istarbucks.co.kr/img/event/2022/footer_award_2211_05.jpg"></a></li>			<li><a taget="_blank" href="javascript:void(0);"><img alt="동반성장위원회 2020 사랑나눔 사회공헌대상 동반성장위원회 위원장상" src="//image.istarbucks.co.kr/img/event/2022/footer_award_2211_06.jpg"></a></li>			<li><a taget="_blank" href="javascript:void(0);"> <img alt="소비자중심경영 CCM인증획득" src="//image.istarbucks.co.kr/img/event/2022/footer_award_2211_07.jpg"></a></li>		</ul>-->
 						<div class="footer_slider_controller">
+
 							<div class="footer_slider_controls"></div>
 							<div class="footer_slider_pagers"></div>
 						</div>
