@@ -426,9 +426,9 @@ var eFrequencyPlannerYn = 'N';
                                 <li class="mob_gnb_ttl2" style="display: list-item;"><a role="button" class="en" href="javascript:void(0);">MENU<span class="mob_gnb_arrow_down"></span></a><!-- 접근성_20171106 role 추가 --></li>
                                 <li style="display: none;"><a href="/menu/index.do">한눈에 보기</a></li>
                                 <li style="display: none;">
-                                    <a role="button" href="javascript:void(0);">음료<span class="mob_gnb_arrow_down"></span></a><!-- 접근성_20171106 role 추가 -->
+                                    <a role="button" href="views/menu/drink_list.do">음료<span class="mob_gnb_arrow_down"></span></a><!-- 접근성_20171106 role 추가 -->
                                     <ul>
-                                        <li style="display: none;"><a href="/menu/drink_list.do">전체보기</a></li>
+                                        <li style="display: none;"><a href="/drink_list.do">전체보기</a></li>
                                         <li style="display: none;"><a href="/menu/drink_list.do?CATE_CD=product_cold_brew">콜드 브루</a></li>
                                         <li style="display: none;"><a href="/menu/drink_list.do?CATE_CD=product_brewed">브루드 커피</a></li><!-- 20230125 url 변경 -->
                                         <li style="display: none;"><a href="/menu/drink_list.do?CATE_CD=product_espresso">에스프레소</a></li>

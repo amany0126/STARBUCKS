@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uandi.Starbucks.drinkMapper.DrinkMapper">
+
+   <!-- 음료이름과 이미지, 신규,시즌정보, 영양정보 -->
+	<select id="DrinkList" resultType="com.uandi.Starbucks.drinkVODTO.DrinkListDTO">
+SELECT
+   D.DRINK_NO,
+   D.NAME,
+   D.NEW_PRODUCT,
+   D.SEASON,
+   D.category_ID,
+   i.URL,
+   ds.category_name,
+   c.Kcal,
+   c.sodium,
+   c.SAT_FAT,
+   c.sugars,
+   c.protein,
+   c.caffeine
+FROM
+   drink_product D
+   LEFT JOIN IMG i ON D.DRINK_NO = i.drink_no
+   LEFT JOIN drink_category ds ON D.category_ID = ds.category_ID
+   LEFT JOIN contain c ON D.drink_no = c.drink_no
+	</select>
+
+	<select id="getCategory" resultType="com.uandi.Starbucks.drinkVODTO.CategoryDTO">
+		select * from drink_category
+	</select>
+
+</mapper>
