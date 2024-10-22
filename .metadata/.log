@@ -1758,3 +1758,106 @@ java.lang.InterruptedException
 	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
 	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
 	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.jdt.core 2 0 2024-10-22 16:49:00.483
+!MESSAGE Java Index broken - will be automatically deleted to repair: file:/C:/STARBUCKS/.metadata/.plugins/org.eclipse.jdt.core/4073428194.index
+!STACK 0
+java.io.UTFDataFormatException
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readStreamChars(DiskIndex.java:988)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readChunk(DiskIndex.java:760)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:633)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndex(IndexManager.java:1147)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1190)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:832)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.jdt.core 2 0 2024-10-22 16:49:00.492
+!MESSAGE Java Index broken - will be automatically deleted to repair: file:/C:/STARBUCKS/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
+!STACK 0
+java.io.UTFDataFormatException
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readStreamChars(DiskIndex.java:988)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readChunk(DiskIndex.java:760)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.readAllDocumentNames(DiskIndex.java:633)
+	at org.eclipse.jdt.internal.core.index.DiskIndex.mergeWith(DiskIndex.java:527)
+	at org.eclipse.jdt.internal.core.index.Index.save(Index.java:228)
+	at org.eclipse.jdt.internal.core.index.MetaIndex.save(MetaIndex.java:99)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveMetaIndex(IndexManager.java:1239)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.saveIndexes(IndexManager.java:1215)
+	at org.eclipse.jdt.internal.core.search.indexing.IndexManager.notifyIdle(IndexManager.java:832)
+	at org.eclipse.jdt.internal.core.search.processing.JobManager.indexerLoop(JobManager.java:509)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+!ENTRY org.eclipse.lsp4e 1 0 2024-10-22 16:49:02.681
+!MESSAGE [Info]	ESLint server running in node v20.13.1
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-10-22 16:49:03.989
+!MESSAGE Classpath changed for project: Starbucks
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:04.873
+!MESSAGE Marker id 569 not found.
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException(/Starbucks/pom.xml)[376]: java.lang.IllegalStateException
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:63)
+	at org.eclipse.core.internal.resources.Marker.setAttributes(Marker.java:330)
+	at org.eclipse.lsp4e.operations.diagnostics.LSPDiagnosticsToMarkers.updateMarker(LSPDiagnosticsToMarkers.java:209)
+	at org.eclipse.lsp4e.operations.diagnostics.LSPDiagnosticsToMarkers$1.runInWorkspace(LSPDiagnosticsToMarkers.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:43)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.core.resources 4 376 2024-10-22 16:49:04.877
+!MESSAGE Marker id 569 not found.
+!STACK 0
+java.lang.IllegalStateException
+	at org.eclipse.core.internal.resources.Marker.checkInfo(Marker.java:63)
+	at org.eclipse.core.internal.resources.Marker.setAttributes(Marker.java:330)
+	at org.eclipse.lsp4e.operations.diagnostics.LSPDiagnosticsToMarkers.updateMarker(LSPDiagnosticsToMarkers.java:209)
+	at org.eclipse.lsp4e.operations.diagnostics.LSPDiagnosticsToMarkers$1.runInWorkspace(LSPDiagnosticsToMarkers.java:182)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:43)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:06.383
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/java/com/uandi/Starbucks/common/controller/commonController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:06.389
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/java/com/uandi/Starbucks/common/controller/commonController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:07.644
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/java/com/uandi/Starbucks/common/controller/commonController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:07.650
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/java/com/uandi/Starbucks/common/controller/commonController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:10.279
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/resources/static/common/css/style_main.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:10.285
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/resources/static/common/css/style_main.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:10.290
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/resources/static/common/css/style_main.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:10.297
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/resources/static/common/css/style_main.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:10.303
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/resources/static/common/css/style_main.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:10.308
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/resources/static/common/css/style_main.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:10.313
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/resources/static/common/css/style_main.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:10.319
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/resources/static/common/css/style_main.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:10.324
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/resources/static/common/css/style_main.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:10.379
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/resources/static/common/css/style_main.css
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:49:10.384
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/resources/static/common/css/style_main.css
