@@ -171,7 +171,7 @@
                             <p class="top_msr_mem_yet"><strong>스타벅스커피 코리아 회원이 아니세요?</strong><br>스타벅스커피 코리아 회원만의<br>특별한 혜택을 누릴 수 있습니다.</p>
                             <div class="msr_nologin_btns">
                                 <ul>
-                                    <li><a href="javascript:$.loginLib.showLayerLogin();">로그인</a></li>
+                                    <li><a href="/login/login.do">로그인</a></li>
                                     <li><a href="/mem/join.do">회원가입</a></li>
                                 </ul>
                             </div>
@@ -584,8 +584,8 @@
                         
                                     
     <ul>
+        <li class="util_nav01 sign_in"><a href="/login/login.do">Sign In</a></li>
         <li class="util_nav01 sign_out" style="display:none;"><a href="javascript:void(0);">Sign out</a></li>
-        <li class="util_nav01 sign_in"><a href="javascript:void(0);">Sign In</a></li>
         <li class="util_nav02"><a href="javascript:void(0);" required="login" data-href="/my/index.do">My Starbucks</a></li>
         <li class="util_nav03"><a href="/util/index.do">Customer Service &amp; Ideas</a></li>
         <li class="util_nav04"><a href="/store/store_map.do">Find a Store</a></li>

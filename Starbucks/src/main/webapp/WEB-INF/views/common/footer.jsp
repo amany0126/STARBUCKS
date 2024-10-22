@@ -89,7 +89,7 @@
 					<ul>
 						<li><a href="/">HOME</a></li>
 						<li>
-							<a href="javascript:$.loginLib.showLayerLogin();" class="sign_in">Sign In</a>
+							<a href="/login/login.do" class="sign_in">Sign In</a>
 							<a href="javascript:$.loginLib.logout();" class="sign_out" style="display:none;">Sign Out</a>
 						</li>
 						<li class="last"><a href="/mem/join1.do">Join Us</a></li>
@@ -183,7 +183,7 @@
 			<!-- footer end -->
 			
 			<!-- <script src="//image.istarbucks.co.kr/common/js/jquery-1.10.2.min.js"></script> -->
-			<script src="https://image.istarbucks.co.kr/common/js/jquery-1.10.2.min.js"></script>
+			<script src="/common/js/jquery-1.10.2.min.js"></script>
                 <script src="https://image.istarbucks.co.kr/common/js/@common.js"></script>
                 <script src="https://image.istarbucks.co.kr/common/js/jquery-ui.min.js?v=220207"></script>
                 <script src="//image.istarbucks.co.kr/common/js/idangerous.swiper-2.1.min.js"></script>
@@ -205,7 +205,7 @@
                 <script src="//image.istarbucks.co.kr/common/js/jquery.transform3d.js"></script>			
                 <script src="//image.istarbucks.co.kr/common/js/greensock/TweenMax.min.js"></script>
                 <script src="//image.istarbucks.co.kr/common/js/masonry.pkgd.js"></script>
-                <script src="//image.istarbucks.co.kr/common/js/common.js"></script>
+                <script src="/common/js/common.js"></script>
 <!--                 <script src="/common/js/gnb.js?v=240902"></script> -->
                 <script href="https://www.starbucks.co.kr/common/js/gnb.js?v=240902/common/js/gnb.js?v=240902"></script>
                 <script src="/common/js/header.js?v=230716"></script>

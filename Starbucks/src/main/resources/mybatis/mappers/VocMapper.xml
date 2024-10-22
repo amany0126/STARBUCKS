@@ -22,6 +22,25 @@
 		<result column="nm_PRDUCT" property="nm_PRDUCT" />
 		<result column="nm_CATE_1" property="nm_CATE_1" />
 	</resultMap>
+	<resultMap id="inquiryDetailsResultSet" type="inquiryDetails">
+		<result column="INQUIRY_NO" property="inquiryNo" />
+		<result column="PAYMENT_INFORMATION" property="paymentInformation" />
+		<result column="INQUIRY_TITLE" property="inquiryTitle" />
+		<result column="INQUIRY_CONTRNT" property="inquiryContenet" />
+		<result column="INQUIRY_DATE" property="inquiryDate" />
+		<result column="PHONE_NUMBER" property="phoneNumder" />
+		<result column="INQUIRY_STATUS" property="inquiryStatus" />
+		<result column="CATEGORY_CODE" property="categoryCode" />
+		<result column="MEMBER_NO" property="memberNo" />
+		<result column="STORE_CODE" property="storeCode" />
+		<result column="INQUIRY_ITEM" property="inquiryItem" />
+	</resultMap>
+	<resultMap id="inquiryAttachmentResultSet" type="inquiryAttachment">
+		<result column="ORIGIN_NAME" property="originName" />
+		<result column="CHANG_NAME" property="changName" />
+		<result column="STATUS" property="status" />
+		<result column="INQUIRY_NO" property="inquiryNo" />
+	</resultMap>
 	 <select id="getVocDemandCodeList" resultMap="mainCategoriesOfInquiriesResultSet"  >
 			SELECT *  FROM MAIN_CATEGORIES_OF_INQUIRIES
 	</select>
@@ -34,4 +53,14 @@
 			  JOIN DRINK_CATEGORY C ON (C.CATEGORY_ID = P.CATEGORY_ID) 
 			  WHERE NAME LIKE '%'||#{NM_PRDUCT}||'%'
 	</select>
+	 <insert id="insertInquiry" parameterType="inquiryDetails" >
+    	INSERT INTO INQUIRY_DETAILS(INQUIRY_NO,PAYMENT_INFORMATION,INQUIRY_TITLE,INQUIRY_CONTRNT,
+    								PHONE_NUMBER,CATEGORY_CODE,MEMBER_NO,STORE_CODE,INQUIRY_ITEM)
+    						VALUES(SEQ_INQUIRY_NO.NEXTVAL,#{paymentInformation},#{inquiryTitle},#{inquiryContenet},
+    								#{phoneNumder},#{categoryCode},#{memberNo},#{storeCode},#{inquiryItem})					   
+    </insert>
+     <insert id="insertInquiryAttachment" parameterType="inquiryAttachment" >
+    	INSERT INTO INQUIRY_ATTACHMENT(ORIGIN_NAME,CHANG_NAME,INQUIRY_NO)
+    				VALUES(#{originName},#{changName},SEQ_INQUIRY_NO.CURRVAL)					   
+    </insert>
 </mapper>

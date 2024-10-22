@@ -71,7 +71,7 @@ $(document).ready(function () {
 	};
 	var strFolder = "";
 	var bIsLogin  = false;
-	
+	/*
 	__ajaxCall("/interface/checkLogin.do", {}, true, "json", "post"
 		,function (_response) {
 			if (_response.result_code == "SUCCESS") {
@@ -123,7 +123,7 @@ $(document).ready(function () {
 		,function (_error) {
 		}
 	);
-
+	*/
 
   /* 150827 추가 - 박종현 end */
 

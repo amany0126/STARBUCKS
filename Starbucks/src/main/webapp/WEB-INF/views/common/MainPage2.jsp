@@ -696,7 +696,7 @@
                     var option = {
                             'MENU_CD' : "STB3120"
                     };
-                    __ajaxCall('/banner/getBannerList.do', option , true, "JSON", "POST", 
+                    __ajaxCall('https://www.starbucks.co.kr/banner/getBannerList.do', option , true, "JSON", "POST", 
                     function(data) {
                         if(data.list.length > 0) {
                             
