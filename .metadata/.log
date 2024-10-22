@@ -2161,3 +2161,21 @@ java.util.concurrent.TimeoutException
 !ENTRY org.eclipse.lsp4e 1 0 2024-10-22 16:16:24.598
 !MESSAGE [Info]	ESLint server running in node v20.13.1
 >>>>>>> Stashed changes
+
+!ENTRY org.eclipse.lsp4e 1 0 2024-10-22 16:56:53.239
+!MESSAGE [Info]	ESLint server running in node v20.13.1
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-10-22 16:56:55.330
+!MESSAGE Classpath changed for project: Starbucks
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:56:59.034
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/java/com/uandi/Starbucks/common/controller/commonController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:56:59.040
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/src/main/java/com/uandi/Starbucks/common/controller/commonController.java
+
+!ENTRY org.eclipse.lsp4e 4 0 2024-10-22 16:56:59.183
+!MESSAGE [Error]	Unexpected resource file:///C:/STARBUCKS/Starbucks/pom.xml
+
+!ENTRY org.eclipse.lsp4e 1 0 2024-10-22 16:57:02.732
+!MESSAGE [Info]	ESLint server running in node v20.13.1
