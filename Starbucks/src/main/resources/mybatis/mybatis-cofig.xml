@@ -19,6 +19,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.uandi.Starbucks.common.vo.RegionalClassification" alias="regionalClassification"/> 
 		<typeAlias type="com.uandi.Starbucks.common.vo.StoreLocation" alias="storeLocation"/> 
 		<typeAlias type="com.uandi.Starbucks.common.vo.DrinkProduct" alias="drinkProduct"/> 
+		<typeAlias type="com.uandi.Starbucks.common.vo.InquiryDetails" alias="inquiryDetails"/> 
+		<typeAlias type="com.uandi.Starbucks.common.vo.InquiryAttachment" alias="inquiryAttachment"/> 
 
 	</typeAliases> 
 	<mappers>

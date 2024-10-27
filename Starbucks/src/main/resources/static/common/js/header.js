@@ -118,15 +118,15 @@ $.loginLib = {
 		$('a[required="login"]').on("click", function () {
 			var strHref = $(this).data("href");
 			
-			__ajaxCall("/interface/checkLogin.do", {}, true, "json", "post"
+			_/*_ajaxCall("/interface/checkLogin.do", {}, true, "json", "post"
 				,function (_response) {
 					if (_response.result_code == "SUCCESS") {
 						location.href = strHref;
 					} else {
-						/*
+						
 						$.loginLib.showLayerLogin();
 						m_strTargetUrl = strHref;
-						*/
+						
 						if(strHref.indexOf("javascript:void") > -1 || strHref.indexOf("javascript%3Avoid") > -1) {
 							location.href = "/login/login.do";
 						} else {
@@ -136,7 +136,7 @@ $.loginLib = {
 				}
 				,function (_error) {
 				}
-			);
+			);*/
 		});		
 		
 		/*
@@ -186,7 +186,7 @@ $.loginLib = {
 	}
 	
 	,setGnbSignInOut : function () {
-		__ajaxCall("/interface/checkLogin.do", {}, true, "json", "post"
+	/*	__ajaxCall("/interface/checkLogin.do", {}, true, "json", "post"
 			,function (_response) {
 				if (_response.result_code == "SUCCESS") {
 					$(".top_msr_wrap").show();
@@ -205,7 +205,7 @@ $.loginLib = {
 			}
 			,function (_error) {
 			}
-		);
+		);*/
 	}
 	
 	/*

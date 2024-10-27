@@ -28,6 +28,6 @@
 			  FROM STORE_LOCATION S
 			  JOIN REGIONAL_CLASSIFICATION C ON (C.GUNGU_CODE = S.GUNGU_CODE)
 			  JOIN REGION_MAJOR_CATEGORIES M ON (M.SIDO_CODE = C.SIDO_CODE)
-			 WHERE S.GUNGU_CODE =  #{gugun} AND S.STORE_NAME like '%'||#{store_nm}||'%' 
+			 WHERE S.GUNGU_CODE like '%'||#{gugun}||'%'  AND S.STORE_NAME like '%'||#{store_nm}||'%' 
 	</select>
 </mapper>

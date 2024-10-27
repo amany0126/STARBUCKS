@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.uandi.Starbucks.voc.model.mapper.VocMapper;
 import com.uandi.Starbucks.voc.vo.DrinkProduct;
+import com.uandi.Starbucks.voc.vo.InquiryAttachment;
 import com.uandi.Starbucks.voc.vo.InquiryCategory;
+import com.uandi.Starbucks.voc.vo.InquiryDetails;
 import com.uandi.Starbucks.voc.vo.MainCategoriesOfInquiries;
 
 @Service
@@ -26,6 +28,14 @@ public class VocService {
 
 	public ArrayList<DrinkProduct> getVocProdCodeList(String NM_PRDUCT) {
 		return vocMapper.getVocProdCodeList(NM_PRDUCT);
+	}
+
+	public int insertInquiry(InquiryDetails id) {
+		return vocMapper.insertInquiry(id);
+	}
+
+	public int insertInquiryAttachment(InquiryAttachment files) {
+		return vocMapper.insertInquiryAttachment(files);
 	}
 	
 
