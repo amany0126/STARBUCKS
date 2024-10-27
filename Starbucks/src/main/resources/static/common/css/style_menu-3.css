@@ -234,7 +234,7 @@
 	/* 201505222 탭수정 end */
 
 	/* 240411 추가 */
-	dl.product_view_tab > dd > dl > dd > p { display: block; font-size: 16px; font-weight: normal; text-align: right; margin:20px 0 15px; letter-spacing: -0.25px; color: #666}
+	dl.product_view_tab > dd > p { display: block; font-size: 16px; font-weight: normal; text-align: right; margin:20px 0 15px; letter-spacing: -0.25px; color: #666}
 	/* 240411 추가 end */
 
 	div.product_list > dl > dt {padding:20px; background:#f4f4f2; margin-bottom:20px; border-radius:3px; overflow:hidden; }/* 20170818  수정*/
