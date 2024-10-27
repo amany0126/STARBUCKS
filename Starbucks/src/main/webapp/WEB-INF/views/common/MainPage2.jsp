@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- <html> -->
 <head>
 <meta charset="UTF-8">
 <title id="titleJoin">Starbucks Korea</title>
@@ -660,10 +661,10 @@
                 }
     
                 $(document).ready(function(){
-                    
-                    __ajaxCall("/interface/checkLogin.do", {}, true, "json", "post"
-                            ,function (_response) {
-                                if (_response.result_code == "SUCCESS") {
+                	
+           __ajaxCall("/login/checkLogin.do", {}, false, "json", "post"
+                            ,function (data) {
+                                if (data.result_code == "SUCCESS") {
                                     $(".top_msr_wrap").show();
                                     $(".top_msr_nologin").hide();
                                     $(".sign_out").show();
@@ -676,10 +677,13 @@
                                     $(".top_msr_wrap").hide();
                                     $(".top_msr_nologin").show();
                                 }
+                                console.log(_response)
                             }
-                            ,function (_error) {
+                            ,function (request,status,error) {
+                            	/* console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error); */
+                            	 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
                             }
-                        );
+                        ); 
                     
                     /**
                       $('.line_notice_inner_l dd ul').inewsticker({
@@ -1004,7 +1008,7 @@
             <script src="https://www.starbucks.co.kr/common/js/inewsticker.js"></script>
             
             <script src="https://www.starbucks.co.kr/common/js/bbs/main_rolling.js"></script>
-            <script src="https://www.starbucks.co.kr/common/js/main/index.js?v=200907"></script>
+            <script src="/common/js/main/index.js"></script>
             
             
             

@@ -170,19 +170,21 @@
 									
 									<div class="renew_input_box bd_none">
 										<label for="txt_user_id" class="hid">아이디</label><!-- 접근성_20171120 라벨 추가 -->
-										<input class="login_id mb10" id="txt_user_id" name="user_id" type="text" maxlength="20" placeholder="아이디를 입력해 주세요." required="required" /><!-- 접근성_20171120 required 추가 -->
+										<input class="login_id mb10" id="txt_user_id" name="memberId" type="text" maxlength="20" placeholder="아이디를 입력해 주세요." required="required" /><!-- 접근성_20171120 required 추가 -->
 										<p class="limit_txt user_id_txt"></p>
 										<label for="txt_user_pwd" class="hid">비밀번호</label><!-- 접근성_20171120 라벨 추가 -->
-										<input class="login_pw mb10" id="txt_user_pwd" name="user_pwd" type="password" maxlength="20" placeholder="비밀번호를 입력해 주세요." required="required"  autocomplete="off"/><!-- 접근성_20171120 required 추가 , 20181025_autocomplete="off" 추가 -->
+										<input class="login_pw mb10" id="txt_user_pwd" name="password" type="password" maxlength="20" placeholder="비밀번호를 입력해 주세요." required="required"  autocomplete="off"/><!-- 접근성_20171120 required 추가 , 20181025_autocomplete="off" 추가 -->
 										<p class="limit_txt user_pwd_txt"></p>
 										<!-- 접근성_20171120 포커스:  추가 -->
 										<span class="checkWrap">
-											<input type="checkbox" name="idRemb" id="idRemb" class="mem2" />
+											<input type="checkbox" name="idRemb" id="idRemb" class="mem2" value="on"/>
 											<label for="idRemb">아이디 저장</label>
 										</span>
 										<!-- 접근성_20171120 포커스:  추가 끝 -->
 										<p class="btn_mem_login">
-											<a class="btn_login" href="javascript:void(0);" role="submit">로그인</a><!-- 접근성_20171120 role 추가 -->
+											<!-- <a class="btn_login" href="javascript:void(0);" role="submit">로그인</a> --><!-- 접근성_20171120 role 추가 -->
+											<!-- <a class="btn_login" href="#" onclick="return chk_form()">로그인</a>  --><!-- 접근성_20171120 role 추가 -->
+											<a class="btn_login" href="#" onclick="submitButten(event);">로그인</a> <!-- 접근성_20171120 role 추가 -->
 										</p>
 										<p class="input_warn_text t_006633">
 											* 타 사이트와 비밀번호를 동일하게 사용할 경우 도용의 위험이 있으므로, 정기적인 비밀번호 변경을 해주시길 바랍니다.<br/>
@@ -261,6 +263,88 @@
 			m_strTargetUrl = '';
 		</script>
 		<script src="/common/js/login/login.js"></script>
+		<script>
+function chk_form(e) {
+
+
+/* document.getElementById('frmLogin').submit(); */
+}
+
+/* $(".btn_mem_login .btn_login").on("click", function(){
+	
+	if(document.getElementById("txt_user_id").value==''){
+		alert("아이디를 입력해주십시오.");
+		return false;
+	}
+	if(document.getElementById("txt_user_pwd").value==''){
+		alert("비밀번호를 입력해주십시오.");
+		return false;
+	}
+	
+	
+	var memberId  = $("#txt_user_id").val();
+	var password = $("#txt_user_pwd").val();
+	var idRemb = $("#idRemb").val();
+	
+	var objParam = {
+			 "memberId"  : memberId
+			,"password" : password
+			,"idRemb"  : idRemb
+		}
+	___ajaxCall("/login/login_proc.do", objParam, false, "json", "post",function (_response) {
+		if(_response.result=="성공"){
+			
+			alert(_response.NickName+"님 반갑습니다.")
+			location.replace("/")
+			console.log(result)
+		}else{
+			alert("로그인에 실패하셨습니다.\n아이디 또는 비밀번호를 확인후 다시 입력해 주세요")
+		}
+	
+	});
+}); */
+
+$(document).ready(function () {
+	 $('a[class="btn_login"]').attr("href", null);
+})
+function submitButten(e){
+	
+	/* e.preventDefault() */
+	
+	
+	if(document.getElementById("txt_user_id").value==''){
+		alert("아이디를 입력해주십시오.");
+		return false;
+	}
+	if(document.getElementById("txt_user_pwd").value==''){
+		alert("비밀번호를 입력해주십시오.");
+		return false;
+	}
+	
+	
+	var memberId  = $("#txt_user_id").val();
+	var password = $("#txt_user_pwd").val();
+	var idRemb = $("#idRemb").val();
+	
+	var objParam = {
+			 "memberId"  : memberId
+			,"password" : password
+			,"idRemb"  : idRemb
+		}
+	___ajaxCall("/login/login_proc.do", objParam, false, "text", "POST"
+	,function (_response) {
+		if(_response.substr(0,2)=="성공"){
+			
+			alert(_response.substr(3)+"님 반갑습니다.")
+			location.replace("/")
+			console.log(result)
+		}else{
+			alert("로그인에 실패하셨습니다.\n아이디 또는 비밀번호를 확인후 다시 입력해 주세요")
+		}
+	
+	});
+	}
+</script>
 </div>
 <!-- 해당 페이지 스크립트 부분 -->	
 </body>

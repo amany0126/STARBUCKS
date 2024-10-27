@@ -157,7 +157,7 @@
 							<fieldset>
 							<input type="hidden" name="CD_VISIT_STR" id="CD_VISIT_STR">
 							<input type="hidden" name="CD_STORE" id="CD_STORE">
-							<input type="hidden" name="DS_CSTMR_CTTPC" id="DS_CSTMR_CTTPC">
+							<input type="hidden" name="DS_CSTMR_CTTPC" id="DS_CSTMR_CTTPC" value="${Phone}">
 							<!-- <input type="hidden" name="DS_CSTMR_EMAIL" id="DS_CSTMR_EMAIL"> -->
 							<input type="hidden" name="DS_NO_BILL" id="DS_NO_BILL">
 							<input type="hidden" name="ERECEIPT_CONTENT" id="ERECEIPT_CONTENT">
@@ -311,11 +311,11 @@
 															</select>
 													</p>
 													<p class="cell_hyphen">-</p>
-													<input class="cellphone_input" id="phone2_mask" name="phone2_mask" type="text" maxlength="4" ref="num" value='****' 
+													<input class="cellphone_input" id="phone2_mask" name="phone2_mask" type="text" maxlength="4" ref="num" value="${Phone2}"
 														onclick="initPhone2();"
 	  													onblur="maskingPhone2(this.value);"/>
 													<p class="cell_hyphen">-</p>
-													<input class="cellphone_input" id="phone3" name="phone3" type="text" maxlength="4" ref="num" value='7174'
+													<input class="cellphone_input" id="phone3" name="phone3" type="text" maxlength="4" ref="num" value="${Phone3}"
 														onclick="initPhone3();"/> 
 													<input type="hidden" name="phone2" id="phone2"/>
 													<input type="hidden" name="phone_change_flag" id="phone_change_flag"/>
@@ -893,7 +893,7 @@
 				});
 				
 				//고객 연락처 셋팅
-				$("select[id=phone1]").append(createMobile('010'));
+				$("select[id=phone1]").append(createMobile('${Phone1}'));
 				$("#phone1").trigger("change");
 				
 			});
@@ -1413,7 +1413,7 @@
 					$("#phone3").val("");
 					$("#phone_change_flag").val("Y");
 				}
-				else if($("#phone1").val() != '010'){
+				else if($("#phone1").val() != '${Phone1}'){
 					$("#phone2").val("");
 					$("#phone2_mask").val("");
 					$("#phone3").val("");

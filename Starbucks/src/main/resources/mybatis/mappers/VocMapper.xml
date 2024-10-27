@@ -34,8 +34,20 @@
 		<result column="MEMBER_NO" property="memberNo" />
 		<result column="STORE_CODE" property="storeCode" />
 		<result column="INQUIRY_ITEM" property="inquiryItem" />
+		<result column="id_VOC" property="id_VOC" />
+		<result column="ds_VOC_TITLE" property="ds_VOC_TITLE" />
+		<result column="yn_ANSWER" property="yn_ANSWER" />
+		<result column="cd_VOC_STTUS" property="cd_VOC_STTUS" />
+		<result column="dt_VOC_REG" property="dt_VOC_REG" />
+		<result column="file_YN" property="file_YN" />
 	</resultMap>
 	<resultMap id="inquiryAttachmentResultSet" type="inquiryAttachment">
+		<result column="ORIGIN_NAME" property="originName" />
+		<result column="CHANG_NAME" property="changName" />
+		<result column="STATUS" property="status" />
+		<result column="INQUIRY_NO" property="inquiryNo" />
+	</resultMap>
+	<resultMap id="frequentlyAskedQuestionsResultSet" type="frequentlyAskedQuestions">
 		<result column="ORIGIN_NAME" property="originName" />
 		<result column="CHANG_NAME" property="changName" />
 		<result column="STATUS" property="status" />
@@ -63,4 +75,39 @@
     	INSERT INTO INQUIRY_ATTACHMENT(ORIGIN_NAME,CHANG_NAME,INQUIRY_NO)
     				VALUES(#{originName},#{changName},SEQ_INQUIRY_NO.CURRVAL)					   
     </insert>
+    <select id="CntVocT" parameterType="_int" >
+				SELECT  COUNT(*)
+			  FROM INQUIRY_DETAILS
+			  WHERE  MEMBER_NO = #{memberNo}
+	</select>
+	<select id="CntVocC"  parameterType="_int" >
+				SELECT  COUNT(*)
+			  FROM INQUIRY_DETAILS
+			  WHERE INQUIRY_STATUS = 'Y' AND  MEMBER_NO = #{memberNo}
+	</select>
+	<select id="getVocMyList" resultMap="inquiryDetailsResultSet"  parameterType="_int" >
+			SELECT D.INQUIRY_NO AS "id_VOC" ,D.INQUIRY_TITLE AS "ds_VOC_TITLE",D.INQUIRY_STATUS AS "yn_ANSWER", 
+			       DECODE(D.INQUIRY_STATUS,'N','','PO')AS "cd_VOC_STTUS", SUBSTR(D.INQUIRY_DATE,1,10) AS "dt_VOC_REG",
+			       DECODE((SELECT COUNT(*) FROM INQUIRY_ATTACHMENT A1 WHERE A1.INQUIRY_NO = D.INQUIRY_NO),0,'N','Y')  AS "file_YN"
+			 FROM INQUIRY_DETAILS D
+			WHERE MEMBER_NO = #{memberNo} AND  INQUIRY_STATUS = #{inquiryStatus}
+	</select>
+	<select id="selectInquiryCount" parameterType="inquiryDetails"  >
+			SELECT COUNT(*)
+			 FROM INQUIRY_DETAILS D
+			WHERE MEMBER_NO = #{memberNo} AND  INQUIRY_STATUS = #{inquiryStatus}
+	</select>
+	<select id="getFaqBest5" resultMap="frequentlyAskedQuestionsResultSet" resultType="frequentlyAskedQuestions"  >
+			SELECT QUESTIONS_NO AS "id_VOC_FAQ", ASKED AS "ds_ANSWER", QUESTIONS AS "ds_QESTN",M.CODE_NAME AS "code_NAME"
+ FROM FREQUENTLY_ASKED_QUESTIONS F
+ JOIN INQUIRY_CATEGORY I ON (I.CATEGORY_CODE=F.CATEGORY_CODE)
+ JOIN MAIN_CATEGORIES_OF_INQUIRIES M ON (M.CODE=I.MAIN_CATEGORY_CODE)
+ WHERE QUESTIONS_NO &gt;=1 AND QUESTIONS_NO &lt;=10
+	</select>
+	<select id="updateFaqViewCount" resultMap="frequentlyAskedQuestionsResultSet" resultType="frequentlyAskedQuestions"  >
+			SELECT QUESTIONS_NO AS "id_VOC_FAQ", ASKED AS "ds_ANSWER", QUESTIONS AS "ds_QESTN",M.CODE_NAME AS "nm_VOC_CAUSE"
+ FROM FREQUENTLY_ASKED_QUESTIONS F
+ JOIN MAIN_CATEGORIES_OF_INQUIRIES M ON (M.CODE=F.CATEGORY_CODE)
+ WHERE QUESTIONS_NO = ${iD_VOC_FAQ}
+	</select>
 </mapper>

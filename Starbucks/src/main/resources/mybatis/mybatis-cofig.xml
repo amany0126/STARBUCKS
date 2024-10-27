@@ -21,11 +21,15 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.uandi.Starbucks.common.vo.DrinkProduct" alias="drinkProduct"/> 
 		<typeAlias type="com.uandi.Starbucks.common.vo.InquiryDetails" alias="inquiryDetails"/> 
 		<typeAlias type="com.uandi.Starbucks.common.vo.InquiryAttachment" alias="inquiryAttachment"/> 
+		<typeAlias type="com.uandi.Starbucks.login.vo.Member" alias="member"/> 
+		<typeAlias type="com.uandi.Starbucks.voc.vo.FrequentlyAskedQuestions" alias="frequentlyAskedQuestions"/> 
 
 	</typeAliases> 
 	<mappers>
 		<mapper resource="mybatis/mappers/VocMapper.xml" />
 		<mapper resource="mybatis/mappers/CommonMapper.xml" />
+		<mapper resource="mybatis/mappers/LoginMapper.xml" />
+		<mapper resource="mybatis/mappers/MyMapper.xml" />
 
 	</mappers>
 </configuration>

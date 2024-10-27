@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.uandi.Starbucks.voc.model.mapper.VocMapper;
 import com.uandi.Starbucks.voc.vo.DrinkProduct;
+import com.uandi.Starbucks.voc.vo.FrequentlyAskedQuestions;
 import com.uandi.Starbucks.voc.vo.InquiryAttachment;
 import com.uandi.Starbucks.voc.vo.InquiryCategory;
 import com.uandi.Starbucks.voc.vo.InquiryDetails;
@@ -36,6 +37,30 @@ public class VocService {
 
 	public int insertInquiryAttachment(InquiryAttachment files) {
 		return vocMapper.insertInquiryAttachment(files);
+	}
+
+	public  int CntVocT(int memberNo) {
+		return vocMapper.CntVocT(memberNo);
+	}
+
+	public  int CntVocC(int memberNo) {
+		return vocMapper.CntVocC(memberNo);
+	}
+
+	public ArrayList<InquiryDetails> getVocMyList(InquiryDetails i) {
+		return vocMapper.getVocMyList(i);
+	}
+
+	public int selectInquiryCount(InquiryDetails i) {
+		return vocMapper.selectInquiryCount(i);
+	}
+
+	public ArrayList<FrequentlyAskedQuestions> getFaqBest5() {
+		return vocMapper.getFaqBest5();
+	}
+
+	public ArrayList<FrequentlyAskedQuestions> updateFaqViewCount(int iD_VOC_FAQ) {
+		return vocMapper.updateFaqViewCount(iD_VOC_FAQ);
 	}
 	
 

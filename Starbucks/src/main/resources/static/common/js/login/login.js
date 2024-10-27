@@ -4,9 +4,8 @@ $(document).ready(function () {
 	setCaptcha();
 	setEvent();
 	
-	
-	if (Cookies.getCookie("idRemb") != "") {
-		$("#txt_user_id").val( Cookies.getCookie("idRemb") );
+	if (Cookies.getCookie("saveId") != "") {
+		$("#txt_user_id").val( Cookies.getCookie("saveId") );
 		$("#idRemb").prop("checked", true).trigger("change");
 	}
 });
@@ -18,7 +17,7 @@ function setEvent() {
 		$(this).removeClass("green");
 	});
 	
-	$(".btn_mem_login .btn_login").on("click", login);
+	/*$(".btn_mem_login .btn_login").on("click", login);*/
 	
 	$("#txt_user_pwd, #captcha").on("keydown", function (_e) {
 		if (_e.keyCode == 13) {
@@ -72,7 +71,7 @@ function login() {
 		,"client_id" : Cookies.getCookie("SP-CLIENT-ID")
 	};
 
-	___ajaxCall("/interface/loginMember.do", objParam, false, "json", "post"
+	/*___ajaxCall("/interface/loginMember.do", objParam, false, "json", "post"
 		,function (_response) {
 			if (_response.data != null) {
 				if (_response.data.spClientId != undefined && _response.data.spClientId != null) {
@@ -104,10 +103,10 @@ function login() {
 				if (m_strTargetUrl == "") {
 					location.replace("/");
 				} else {
-					/* 20180731 [취약점] Login Redirect URL 제한 by smno
+					 20180731 [취약점] Login Redirect URL 제한 by smno
 					 * WhiteList 체크 & 내부 서비스URL 체크 로직 변경
 					 * 20190328 [GAS 웹 취약점] %09(탭) 예외처리 by smno
-					 */
+					 
 					if (m_strTargetUrl.charAt(0) == "/" && encodeURIComponent(m_strTargetUrl.charAt(1)) == "%09") {
 						location.replace("/");
 					} else if ((m_strTargetUrl.charAt(0) == "/" && m_strTargetUrl.charAt(1) != "/") || $('#isWhiteRedirectUrl').val() == 'Y') {
@@ -135,7 +134,7 @@ function login() {
 				location.replace(_response.location_replace);
 			}
 		}
-	);
+	);*/
 }
 
 function setCaptcha() {

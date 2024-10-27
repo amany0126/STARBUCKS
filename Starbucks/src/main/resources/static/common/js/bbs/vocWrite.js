@@ -801,7 +801,7 @@ var $voc = {
 			});
 		},cstmrAgreeCnt : function(){
 			
-			var objParam = {};
+		/*	var objParam = {};
 			
 			//VOC 개인정보의 수집 동의여부 조회 API 호출
 			__ajaxCall("/voc/getCstmrAgreeCnt.do", objParam, true, "json", "post", function(data) {
@@ -815,7 +815,7 @@ var $voc = {
 			},function(result) {
 				alert("실패");
 				return;	
-			});
+			});*/
 		},updateCstmrAgree : function(){
 			
 			var objParam = {};
@@ -1448,7 +1448,7 @@ var $voc = {
         		);    				    			
     		}
 		},getVocEvent : function(){
-			__ajaxCall("/voc/getVocEvent.do", {} , true, "JSON", "POST", function(data) {
+			__ajaxCall("https://www.starbucks.co.kr//voc/getVocEvent.do", {} , true, "JSON", "POST", function(data) {
 				if((data.EVENT_TITLE != null && data.EVENT_TITLE != '' && data.EVENT_TITLE != 'null' && data.EVENT_TITLE != 'undefined') && (data.EVENT_CONTENT != null && data.EVENT_CONTENT != '' && data.EVENT_CONTENT != 'null' && data.EVENT_CONTENT != 'undefined')){
 					$('.pop_up_voc').show();
 					$('.sugNoticePop').show();

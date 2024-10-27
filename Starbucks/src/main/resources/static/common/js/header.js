@@ -118,9 +118,9 @@ $.loginLib = {
 		$('a[required="login"]').on("click", function () {
 			var strHref = $(this).data("href");
 			
-			_/*_ajaxCall("/interface/checkLogin.do", {}, true, "json", "post"
+			__ajaxCall("/login/checkLogin.do", {}, true, "json", "post"
 				,function (_response) {
-					if (_response.result_code == "SUCCESS") {
+					if (_response == "SUCCESS") {
 						location.href = strHref;
 					} else {
 						
@@ -136,7 +136,7 @@ $.loginLib = {
 				}
 				,function (_error) {
 				}
-			);*/
+			);
 		});		
 		
 		/*
@@ -186,7 +186,7 @@ $.loginLib = {
 	}
 	
 	,setGnbSignInOut : function () {
-	/*	__ajaxCall("/interface/checkLogin.do", {}, true, "json", "post"
+		__ajaxCall("/login/checkLogin.do", {}, true, "json", "post"
 			,function (_response) {
 				if (_response.result_code == "SUCCESS") {
 					$(".top_msr_wrap").show();
@@ -205,7 +205,7 @@ $.loginLib = {
 			}
 			,function (_error) {
 			}
-		);*/
+		);
 	}
 	
 	/*
@@ -252,7 +252,7 @@ $.loginLib = {
 	*/
 	
 	,logout : function () {
-		__ajaxCall("/interface/logoutMember.do", {}, true, "json", "post"
+		__ajaxCall("/login/logoutMember.do", {}, true, "json", "post"
 			,function (_response) {
 				if (_response.alert_msg != "") {
 					alert(_response.alert_msg);

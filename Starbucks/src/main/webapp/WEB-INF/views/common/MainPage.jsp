@@ -1845,7 +1845,7 @@ var eFrequencyPlannerYn = 'N';
 
 			$(document).ready(function(){
 				
-				__ajaxCall("/interface/checkLogin.do", {}, true, "json", "post"
+				/* __ajaxCall("/interface/checkLogin.do", {}, true, "json", "post"
 						,function (_response) {
 							if (_response.result_code == "SUCCESS") {
 								$(".top_msr_wrap").show();
@@ -1864,7 +1864,7 @@ var eFrequencyPlannerYn = 'N';
 						,function (_error) {
 						}
 					);
-				
+				 */
 				/**
 	 	 		$('.line_notice_inner_l dd ul').inewsticker({
 					speed       : 2500,
@@ -2188,7 +2188,7 @@ var eFrequencyPlannerYn = 'N';
 		<script src="/common/js/inewsticker.js"></script>
 		
     	<script src="/common/js/bbs/main_rolling.js"></script>
-    	<script src="/common/js/main/index.js?v=200907"></script>
+    	<script src="/common/js/main/index.js"></script>
     	
     	
 		

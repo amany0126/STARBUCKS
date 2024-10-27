@@ -23,4 +23,10 @@ public class InquiryDetails {
 	private int memberNo;
 	private String storeCode;
 	private String inquiryItem;
+	private int id_VOC;
+	private String ds_VOC_TITLE;
+	private String yn_ANSWER;
+	private String cd_VOC_STTUS;
+	private String dt_VOC_REG;
+	private String file_YN;
 }

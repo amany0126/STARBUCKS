@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.uandi.Starbucks.login.model.mapper.MemberMapper">
+	
+ 	<resultMap id="memberResultSet" type="member">
+		<result column="MEMBER_NO" property="memberNo" />
+		<result column="NAME" property="name" />
+		<result column="NICKNAME" property="nickName" />
+		<result column="MEMBER_ID" property="memberId" />
+		<result column="PASSWORD" property="password" />
+		<result column="EMAIL" property="email" />
+		<result column="PHONENUM" property="phoneNum" />
+		<result column="MANAGER" property="manager" />
+	</resultMap>
+ 
+
+ 
+	 <select id="loginMember" resultMap="memberResultSet" resultType="member"  >
+			SELECT *  FROM MEMBER WHERE MEMBER_ID = #{memberId} 
+	</select>
+
+</mapper>

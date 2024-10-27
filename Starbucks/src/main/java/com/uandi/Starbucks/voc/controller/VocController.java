@@ -11,15 +11,20 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.uandi.Starbucks.login.vo.Member;
 import com.uandi.Starbucks.voc.model.service.VocService;
 import com.uandi.Starbucks.voc.vo.DrinkProduct;
+import com.uandi.Starbucks.voc.vo.FrequentlyAskedQuestions;
 import com.uandi.Starbucks.voc.vo.InquiryAttachment;
 import com.uandi.Starbucks.voc.vo.InquiryCategory;
 import com.uandi.Starbucks.voc.vo.InquiryDetails;
@@ -93,7 +98,9 @@ public class VocController {
 		
 	}
 	InquiryDetails id = new InquiryDetails();
-	id.setMemberNo(1);
+	/* id.setMemberNo(1); */
+	String memberNo = ((Member)session.getAttribute("loginUser")).getMemberNo();
+	id.setMemberNo(Integer.parseInt(memberNo));
 	
 	id.setInquiryTitle(idw.getDS_VOC_TITLE());
 	id.setInquiryContenet(idw.getDS_VOC_CN());
@@ -125,9 +132,11 @@ public class VocController {
 	
 	int Result1 = 0;
 	int Result2 = 1;
-	 Result1 = vocService.insertInquiry(id);
+	// Result1 = vocService.insertInquiry(id);
 	
-		if(Result1>=1) {
+	System.out.println(!fileNameList.isEmpty());
+	System.out.println(fileNameList.size());
+		if(Result1>=1 && !fileNameList.isEmpty()) {
 			for (int i = 0; i < fileNameList.size(); i++) {
 				InquiryAttachment files = new InquiryAttachment();
 				files.setOriginName(fileNameList.get(i).getOriginalFilename());
@@ -169,4 +178,120 @@ public String savePath(MultipartFile upfile, HttpSession session) {
 		return changName;
 		
 	}
+		@ResponseBody
+		@PostMapping(value = "voc/getVocMyCount.do")
+		public  JSONObject getVocMyCount(HttpSession session) {
+			
+			int  memberNo =0;
+			int cntVocT=0;
+			int  cntVocC=0;
+			
+			if(session != null && session.getAttribute("loginUser") != null) {
+				String  memberNum = ((Member)session.getAttribute("loginUser")).getMemberNo();
+				memberNo = Integer.parseInt(memberNum);
+				
+				 cntVocT = vocService.CntVocT(memberNo);
+				 cntVocC = vocService.CntVocC(memberNo);
+			}
+			/*
+			 * int memberNo =
+			 * Integer.parseInt(((Member)session.getAttribute("loginUser")).getMemberNo());
+			 * 
+			 * int cntVocT = vocService.CntVocT(memberNo); int cntVocC =
+			 * vocService.CntVocC(memberNo);
+			 */
+			
+			JSONObject jsonobject = new JSONObject();
+			jsonobject.put("cntVocT", cntVocT);
+			jsonobject.put("cntVocC", cntVocC);
+			jsonobject.put("cntVocR", cntVocT-cntVocC);
+			
+			return jsonobject;
+		}
+		@ResponseBody
+		@PostMapping(value = "voc/getVocMyList.do")
+		public JSONObject getVocMyList(String YN_ANSWER,HttpSession session,Model model) {
+			
+			String  memberNum = ((Member)session.getAttribute("loginUser")).getMemberNo();
+			int memberNo = Integer.parseInt(memberNum);
+			InquiryDetails i = new InquiryDetails();
+			
+			System.out.println(memberNo);
+			System.out.println(YN_ANSWER);
+			
+		
+			int cntVocT=0;
+			int cntVocC=0;
+			i.setMemberNo(memberNo);
+			i.setInquiryStatus(YN_ANSWER);
+			
+			int cnt = vocService.selectInquiryCount(i);
+			ArrayList<InquiryDetails> list =  vocService.getVocMyList(i);
+			
+			
+			
+			System.out.println(session != null  );
+			System.out.println(session.getAttribute("loginUser") != null );
+			if(session != null && session.getAttribute("loginUser") != null) {
+				memberNo = Integer.parseInt(memberNum);
+				System.out.println(memberNo+2);
+				
+				 cntVocT = vocService.CntVocT(memberNo);
+				 cntVocC = vocService.CntVocC(memberNo);
+			}
+			
+			JSONObject jsonobject = new JSONObject();
+			jsonobject.put("cntVocT", cntVocT);
+			jsonobject.put("cntVocC", cntVocC);
+			jsonobject.put("cntVocR", cntVocT-cntVocC);
+			jsonobject.put("list", list);
+			jsonobject.put("cnt", cnt);
+			
+			// 조회용 코드 작성하기
+			
+			return jsonobject;
+		}
+		@ResponseBody
+		@PostMapping(value = "/voc/getFaqBest5.do")
+		public  JSONObject getFaqBest5( ) {
+			ArrayList<FrequentlyAskedQuestions> list = vocService.getFaqBest5();
+			
+			JSONObject jsonobject = new JSONObject();
+			jsonobject.put("list", list);
+			
+			return jsonobject;
+		}
+		@ResponseBody
+		@PostMapping(value = "/voc/updateFaqViewCount.do")
+		public  JSONObject updateFaqViewCount(String ID_VOC_FAQ) {
+			
+			System.out.println("999999");
+			
+			/* ArrayList<FrequentlyAskedQuestions> list = vocService.getFaqBest5(); */
+			/* FrequentlyAskedQuestions li = vocService.updateFaqViewCount(ID_VOC_FAQ); */
+			JSONObject jsonobject = new JSONObject();
+			/* jsonobject.put("list", list); */
+			
+			return jsonobject;
+		}
+		@ResponseBody
+		@PostMapping(value = "/voc/getFaqList.do")
+		public  JSONObject getFaqList(String ID_VOC_FAQ,String CD_VOC_CAUSE_1) {
+			System.out.println("888888");
+			System.out.println(ID_VOC_FAQ);
+			
+			ArrayList<FrequentlyAskedQuestions> list  = null;
+			if(ID_VOC_FAQ !="") {
+				 list = vocService.updateFaqViewCount(Integer.parseInt(ID_VOC_FAQ));
+			}else {
+				list = vocService.updateFaqViewCount(Integer.parseInt(CD_VOC_CAUSE_1));
+			}
+			
+			/* ArrayList<FrequentlyAskedQuestions> list = vocService.getFaqBest5(); */
+			JSONObject jsonobject = new JSONObject();
+			jsonobject.put("list", list); 
+			jsonobject.put("totCnt", list.size()); 
+			
+			return jsonobject;
+		}
 }

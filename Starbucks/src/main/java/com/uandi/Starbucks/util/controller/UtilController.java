@@ -2,6 +2,7 @@ package com.uandi.Starbucks.util.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class UtilController {
@@ -9,7 +10,7 @@ public class UtilController {
 	public String index() {
 		return "util/util_Index";
 	}
-	@GetMapping(value = "util/faq.do")
+	@RequestMapping(value = "util/faq.do")
 	public String gfapPage() {
 		return "util/util_faq";
 	}

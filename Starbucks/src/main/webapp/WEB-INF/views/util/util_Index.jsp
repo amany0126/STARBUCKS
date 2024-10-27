@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,40 +125,58 @@ Customer Service & Ideas | Starbucks Korea
 									<div class="faq_wrap_inner_l">
 										<strong class="en">FAQ</strong>
 										<p>자주 하는 질문을 모아놓았습니다. 궁금하신 내용을 검색해 주세요.</p> <!-- 20210809 수정 -->
-										<ul id="bestList" class="csi_faq_list1"><li><a href="javascript:faqView('0000006920', '000' , '');" "="">[쿠폰] e-쿠폰은 어떻게 사용할 수 있나요?</a></li><li><a href="javascript:faqView('0000007349', '000' , '');" "="">[별] 별 적립 기준은 무엇인가요?</a></li><li><a href="javascript:faqView('0000007423', '000' , '');" "="">[카드환불] 스타벅스 카드의 환불 기준은 무엇인가요?</a></li><li><a href="javascript:faqView('0000007370', '000' , '');" "="">[골드레벨] 골드레벨은 어떻게 진입할 수 있나요?</a></li><li><a href="javascript:faqView('0000007454', '000' , '');" "="">[운영기준] 유효기간이 만료된 쿠폰도 사용이 가능한가요?</a></li></ul>
+										<ul id="bestList" class="csi_faq_list1"><li><a href="util/faq.do" "="">[쿠폰] e-쿠폰은 어떻게 사용할 수 있나요?</a></li><li><a href="util/faq.do" "="">[별] 별 적립 기준은 무엇인가요?</a></li><li><a href="util/faq.do" "="">[카드환불] 스타벅스 카드의 환불 기준은 무엇인가요?</a></li><li><a href="util/faq.do" "="">[골드레벨] 골드레벨은 어떻게 진입할 수 있나요?</a></li><li><a href="util/faq.do" "="">[운영기준] 유효기간이 만료된 쿠폰도 사용이 가능한가요?</a></li></ul>
 									</div>
 									<div class="faq_wrap_inner_r">
-										<strong>고객의 소리</strong>
-										<p>문의에 대한 처리현황을 확인할 수 있습니다.</p>
-
-
+											<strong>고객의 소리</strong>
+											<p>문의에 대한 처리현황을 확인할 수 있습니다.</p>
+										<c:choose>
+						              	 <c:when test="${ empty  sessionScope.loginUser }">
 										
-											<!-- 로그인 -->
-											<div class="voc_login">
-												<div class="voc_login_inner">
-													<figure>
-														<img alt="" src="//image.istarbucks.co.kr/common/img/util/csi/voc_login_pic.png">
-													</figure>
-													<p>
-														<span>로그인이 필요한<br>서비스입니다.
-														</span>
-													</p>
+												<!-- 로그인 -->
+												<div class="voc_login">
+													<div class="voc_login_inner">
+														<figure>
+															<img alt="" src="//image.istarbucks.co.kr/common/img/util/csi/voc_login_pic.png">
+														</figure>
+														<p>
+															<span>로그인이 필요한<br>서비스입니다.
+															</span>
+														</p>
+													</div>
+												</div>
+												<!-- 로그인 end -->
+												<!-- 로그인 버튼 -->
+												<a class="btn_login" href="javascript:$.loginLib.showLayerLogin();">로그인</a>
+												<!-- <a class="btn_ask" href="/customer/suggestionWrite.do">고객의 소리 문의하기</a> -->
+						              	 </c:when>
+						              	 <c:otherwise>
+						              
+											<!-- 접수 -->
+											<!-- <div class="voc_stat" >
+													<p class="icon_voc01">접수완료</p>
+													<strong>1</strong>
+												</div> -->
+											<!-- 접수 end -->
+											<!-- 접수 & 답변 -->
+											<div class="voc_both_stat">
+												<div class="voc_stat_l">
+													<p class="icon_voc01">접수완료</p>
+													<a href="/my/vocList.do?YN_ANSWER=N"><strong id="reSuc"></strong></a>
+												</div>
+												<div class="voc_stat_r">
+													<p class="icon_voc02">답변완료</p>
+													<a href="/my/vocList.do?YN_ANSWER=Y"><strong id="repSuc"></strong></a>
 												</div>
 											</div>
-											<!-- 로그인 end -->
-										
-
-										
-
-										
-											<!-- 로그인 버튼 -->
-											<a class="btn_login" href="javascript:$.loginLib.showLayerLogin();">로그인</a>
-											<a class="btn_ask" href="/customer/suggestionWrite.do">고객의
-												소리 문의하기</a>
-
-										
-
+											<!-- 접수 & 답변 end -->
+											<a class="btn_ask" href="/customer/suggestionWrite.do">고객의 소리 문의하기</a>
+						              	 </c:otherwise>
+						              </c:choose>
 									</div>
+					
+									
+									
 								</div>
 							</div>
 							<!-- FAQ & 고객의 소리 end -->
@@ -259,10 +278,13 @@ Customer Service & Ideas | Starbucks Korea
 		</div>
 		<form name="customFrm" method="post" onsubmit="return false">
 			<input type="hidden" id="cate_cd" name="cate_cd" value="F17" /> <input
-				type="hidden" id="seq" name="seq" value="0" /> <input type="hidden"
+				type="hidden" id="seq" name="seq" value="1" /> <input type="hidden"
 				id="searchKeyword" name="searchKeyword" value="" />
 		</form>
 	<jsp:include page="../common/footer.jsp" />
+			<script src="/common/js/jquery.ezmark.min.js"></script>
+			<script type="text/javascript" src="/common/js/common_jhp.js"></script>
+			<script src="/common/js/customer/customer_voc.js"></script>
 			<!-- 상용 -->
 			<script type="text/x-jquery-tepl" id="webData">
 				<li>
