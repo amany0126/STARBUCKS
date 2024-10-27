@@ -31,5 +31,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/mappers/LoginMapper.xml" />
 		<mapper resource="mybatis/mappers/MyMapper.xml" />
 
+		<mapper resource="mybatis/mappers/DrinkMapper.xml" />
 	</mappers>
 </configuration>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.uandi.Starbucks.drinkMapper.DrinkMapper">
+
+	<!-- 음료이름과 이미지, 신규,시즌정보, 영양정보 -->
+	<select id="DrinkList"
+		resultType="com.uandi.Starbucks.drinkVODTO.DrinkListDTO">
+		SELECT
+		D.DRINK_NO as "drinkNo",
+		D.NAME,
+		D.NEW_PRODUCT as
+		"newProduct",
+		D.SEASON,
+		D.category_ID as "categoryId",
+		i.URL,
+		ds.category_name as "categoryName",
+		c.Kcal,
+		c.sodium,
+		c.SAT_FAT as
+		"satFat",
+		c.sugars,
+		c.protein,
+		c.caffeine
+		FROM
+		drink_product D
+		LEFT JOIN IMG
+		i ON D.DRINK_NO = i.drink_no
+		LEFT JOIN drink_category ds ON
+		D.category_ID = ds.category_ID
+		LEFT JOIN contain c ON D.drink_no =
+		c.drink_no
+	</select>
+
+	<select id="getCategory"
+		resultType="com.uandi.Starbucks.drinkVODTO.CategoryDTO">
+		select CATEGORY_ID as "categoryId", CATEGORY_NAME as
+		"categoryName" from drink_category
+	</select>
+
+	<select id="getDrinkById" parameterType="string"
+		resultType="com.uandi.Starbucks.drinkVODTO.DrinkDTO">
+		select d.drink_no as "drinkNo", d.NAME, d.ENGNAME, d.content, d.description, i.URL,
+		c.KCAL, c.SODIUM, c.SAT_FAT as "satfat", c.SUGARS, c.PROTEIN,
+		c.CAFFEINE, c.ALLERGY
+		from drink_product d
+		join contain c ON d.drink_no = c.drink_no
+		JOIN IMG i ON D.DRINK_NO = i.drink_no
+		where d.drink_no = #{prodId}
+	</select>
+	
+	<select id="getDrinkSize" resultType="com.uandi.Starbucks.drinkVODTO.DrinkSizeDTO">
+		SELECT 
+    S.SIZE_NAME as "sizeName",
+    s.volume
+FROM 
+    DRINK_SIZE DS
+JOIN 
+    SIZE_VOLUME S ON DS.SIZE_NO = S.SIZE_NO
+WHERE 
+    DS.DRINK_NO = #{prodId}
+AND
+    ROWNUM = 1
+	</select>
+	
+	<select id="getCateDrink" resultType="com.uandi.Starbucks.drinkVODTO.CateDrinkDTO">
+		select d.drink_no as drinkNo, d.name, d.engName, i.URL
+from drink_product d
+join img i ON D.DRINK_NO = i.drink_no
+join drink_category dc on d.category_id = dc.category_id
+where dc.category_id = #{categoryId}
+	</select>
+
+</mapper>
