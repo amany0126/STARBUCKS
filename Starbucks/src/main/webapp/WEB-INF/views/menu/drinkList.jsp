@@ -21,7 +21,6 @@
 <meta property="og:description" content="Starbucks">
 
 <title id="titleJoin">Starbucks Korea</title>
-<script type="text/javascript" src="/common/js/esabsbuxkr.js?single"></script>
 <!-- 220117 수정 -->
 <link rel="shortcut icon"
 	href="../common/img/common/favicon.ico?v=200828" type="image/ico">
@@ -164,29 +163,26 @@
 											<ul class="cate_list">
 												<!-- jsp 수정 : class 추가 -->
 												<li><input style='vertical-align: middle;'
-													type="checkbox" name="product_all" id="product_0"
-													checked> <label for="product_0">전체
-														상품보기</label></li>
-												<li><input type="checkbox" name="product_cold_brew" id="product_1" > 
-													<label for="product_1">콜드 브루 커피</label></li>
+													type="checkbox" name="product_all" id="product_0" checked>
+													<label for="product_0">전체 상품보기</label></li>
+												<li><input type="checkbox" name="product_cold_brew"
+													id="product_1"> <label for="product_1">콜드
+														브루 커피</label></li>
 												<li><input style='vertical-align: middle;'
 													type="checkbox" name="product_brewed" id="product_2">
 													<label for="product_2">브루드 커피</label></li>
 												<li><input style='vertical-align: middle;'
-													type="checkbox" name="product_espresso"
-													id="product_3"> <label
-													for="product_3">에스프레소</label></li>
+													type="checkbox" name="product_espresso" id="product_3">
+													<label for="product_3">에스프레소</label></li>
 												<li><input style='vertical-align: middle;'
-													type="checkbox" name="product_frappuccino"
-													id="product_4"> <label
-													for="product_4">프라푸치노</label></li>
+													type="checkbox" name="product_frappuccino" id="product_4">
+													<label for="product_4">프라푸치노</label></li>
 												<li><input style='vertical-align: middle;'
 													type="checkbox" name="product_blended" id="product_5">
 													<label for="product_5">블렌디드</label></li>
 												<li><input style='vertical-align: middle;'
-													type="checkbox" name="product_refresher"
-													id="product_6"> <label
-													for="product_6">스타벅스 리프레셔</label></li>
+													type="checkbox" name="product_refresher" id="product_6">
+													<label for="product_6">스타벅스 리프레셔</label></li>
 												<!-- 20220613 신규 추가 -->
 												<li><input style='vertical-align: middle;'
 													type="checkbox" name="product_fizzio" id="product_7">
@@ -262,7 +258,6 @@
 							<dd>
 								<div class="product_list">
 
-
 									<!-- 음료 목록을 반복 출력 -->
 									<c:forEach var="category" items="${categoryList}">
 										<dl class="category_${category.categoryId}">
@@ -286,13 +281,12 @@
 												<ul>
 													<c:forEach var="drink" items="${drinkList}">
 														<c:if test="${drink.categoryId == category.categoryId}">
-															<li class="menuDataSet" new="${drink.newProduct}" sell=""
-																recomm="0" sold="N">
+															<li class="menuDataSet" new="${drink.newProduct}"
+																season="${drink.season}" recomm="0" sold="N">
 																<dl style="display: block;">
 																	<dt>
-																		<a href="javascript:void(0)" class="goDrinkView"
-																			prod="${drink.drinkNo}"> <img src="${drink.URL}"
-																			alt="${drink.name}">
+																		<a href="/menu/drinkView.do?prod=${drink.drinkNo}">
+																			<img src="${drink.URL}" alt="${drink.name}">
 																		</a>
 																	</dt>
 																	<dd>${drink.name}</dd>
@@ -318,83 +312,61 @@
 									보기</a>
 								<!-- 접근성_20171123 role 추가 -->
 							</dt>
-							<dd>
+							<dd class="infoCategory">
 								<c:forEach var="category" items="${categoryList}">
-									<h3>${category.categoryName }</h3>
-									<c:choose>
-										<c:when test="${category.categoryId != 10 }">
+									<dl class="category_${category.categoryId}">
+										<dt>
+											<h3>${category.categoryName}</h3>
+										</dt>
+										<dd>
 											<p class="standard">* Tall 사이즈 기준</p>
-										</c:when>
-									</c:choose>
-
-									<!-- 240411 문구 추가 -->
-									<table class="coffeeInfo mb60">
-										<caption class="hid">메뉴, 칼로리, 당류, 단백질, 나트륨, 포화지방,
-											카페인 정보</caption>
-										<colgroup>
-											<col width="16%">
-											<col width="14%">
-											<col width="14%">
-											<col width="14%">
-											<col width="14%">
-											<col width="14%">
-											<col width="14%">
-										</colgroup>
-										<thead>
-											<tr>
-												<th scope="col">메뉴</th>
-												<th scope="col">칼로리(Kcal)</th>
-												<th scope="col">당류(g)</th>
-												<th scope="col">단백질(g)</th>
-												<th scope="col">나트륨(mg)</th>
-												<th scope="col">포화지방(g)</th>
-												<th scope="col">카페인(mg)</th>
-											</tr>
-										</thead>
-										<c:forEach var="drink" items="${drinkList }">
-											<c:if test="${drink.categoryId == category.categoryId}">
-												<tbody >
+											<table class="coffeeInfo mb60">
+												<caption class="hid">메뉴, 칼로리, 당류, 단백질, 나트륨, 포화지방,
+													카페인 정보</caption>
+												<colgroup>
+													<col width="16%">
+													<col width="14%">
+													<col width="14%">
+													<col width="14%">
+													<col width="14%">
+													<col width="14%">
+													<col width="14%">
+												</colgroup>
+												<thead>
 													<tr>
-														<td>${drink.name }</td>
-														<td>${drink.kcal }</td>
-														<td>${drink.sugars }</td>
-														<td>${drink.protein }</td>
-														<td>${drink.sodium }</td>
-														<td>${drink.satFat }</td>
-														<td>${drink.caffeine }</td>
+														<th scope="col">메뉴</th>
+														<th scope="col">칼로리(Kcal)</th>
+														<th scope="col">당류(g)</th>
+														<th scope="col">단백질(g)</th>
+														<th scope="col">나트륨(mg)</th>
+														<th scope="col">포화지방(g)</th>
+														<th scope="col">카페인(mg)</th>
 													</tr>
+												</thead>
+												<tbody>
+													<c:forEach var="drink" items="${drinkList}">
+														<c:if test="${drink.categoryId == category.categoryId}">
+															<tr>
+																<td>${drink.name}</td>
+																<td>${drink.kcal}</td>
+																<td>${drink.sugars}</td>
+																<td>${drink.protein}</td>
+																<td>${drink.sodium}</td>
+																<td>${drink.satFat}</td>
+																<td>${drink.caffeine}</td>
+															</tr>
+														</c:if>
+													</c:forEach>
 												</tbody>
-											</c:if>
-										</c:forEach>
-										</table>
+											</table>
+										</dd>
+									</dl>
 								</c:forEach>
-
-
 							</dd>
 						</dl>
 					</div>
 				</div>
-				<!-- 음료 리스트(카테고리 별) end -->
 
-				<!-- 음료 리스트(서비스 별) -->
-				<!-- <div class="product_result_wrap product_result_wrap02">
-					<div class="product_view_tab_wrap">
-						<dl class="product_view_tab product_view_tab02">
-							<dt style="display: none;"></dt>
-							<dd>
-								<div class="product_list">
-									<dl>
-										<dd>
-											<ul>
-											</ul>
-										</dd>
-									</dl>
-								</div>
-							</dd>
-						</dl>
-					</div>
-				</div> -->
-				<!-- 음료 리스트(서비스 별) end -->
 			</div>
 		</div>
 		<!-- container end -->
@@ -499,71 +471,153 @@
 	<script>
 		
 	</script>
-<script>
+	<script>
+		$(document)
+				.ready(
+						function() {
+							const checkboxes = document
+									.querySelectorAll('input[type="checkbox"][name^="product_"]');
+							const allCheckbox = document
+									.getElementById("product_0"); // '전체상품보기' 체크박스
 
-$(document).ready(function () {
+							// 카테고리 체크박스 변경 시 필터 적용
+							$(".product_select_wrap input:checkbox").on(
+									"change", function() {
+										// 카테고리 체크박스 변경 시 필터링 함수 호출
+										filterProducts();
+									});
 
-	   const checkboxes = document.querySelectorAll('input[type="checkbox"][name^="product_"]');
-	   const allCheckbox = document.getElementById("product_0"); // '전체상품보기' 체크박스
+							// "신규 출시된 메뉴" 및 "시즌성 메뉴" 클릭 시 필터링
+							$("#select_kind1-1, #select_kind1-2").on("change",
+									function() {
+										filterProducts(); // 상세분류 변경 시에도 필터링 함수 호출
+									});
 
-	   // 카테고리 체크박스 변경 시 필터 적용
-	   $(".product_select_wrap input:checkbox").on("change", function () {
-	      applyCategoryFilter();  // 체크박스 변경 시 필터 적용
-	   });
+							// 상세분류, 카테고리 필터링
+							function filterProducts() {
+								const isNewChecked = $("#select_kind1-1").is(
+										":checked"); // 신규 메뉴 체크 여부
+								const isSeasonChecked = $("#select_kind1-2")
+										.is(":checked"); // 시즌성 메뉴 체크 여부
 
-	   // "영양정보로 보기" 버튼 클릭 시 필터 적용
-	   $(".drinkInfo").on("click", function () {
-	      applyCategoryFilter();  // "영양정보로 보기" 버튼 클릭 시 필터 적용
-	   });
+								let categoryFilters = [];
+								// 선택된 카테고리들을 필터로 저장 
+								$(".product_select_wrap input:checkbox:checked")
+										.each(
+												function() {
+													const categoryId = $(this)
+															.attr("id").split(
+																	"_")[1];
+													if (categoryId
+															&& categoryId !== "0") { // '전체상품보기' 제외
+														categoryFilters
+																.push(categoryId);
+													}
+												});
 
-	   // 선택된 카테고리에 맞게 음료 목록 및 영양 정보 필터링
-	   function applyCategoryFilter() {
-	      // '전체상품보기' 체크박스가 선택되어 있는지 확인
-	      if ($("#product_0").is(":checked")) {
-	         // 모든 카테고리와 해당 음료 목록 및 영양 정보를 보이게 처리
-	         $(".product_list dl").css("display", "block");  
-	         $(".product_list dd").css("display", "block");  // 카테고리 안의 dd 태그도 함께 표시
-	         $(".coffeeInfo").css("display", "block"); // 영양정보 테이블도 함께 표시
-	      } else {
-	         // 모든 카테고리와 음료 목록 및 영양 정보를 숨기기
-	         $(".product_list dl").css("display", "none");
-	         $(".product_list dd").css("display", "none");
-	         $(".coffeeInfo").css("display", "none"); // 영양정보 테이블 숨기기
+								// 모든 음료 숨기기
+								$(".menuDataSet").css("display", "none");
+								$(".product_list dl").css("display", "none");
 
-	         // 선택된 카테고리만 보이게 함
-	         $(".product_select_wrap input:checkbox:checked").each(function () {
-	            var categoryId = $(this).attr("id").split("_")[1];
-	            $(".category_" + categoryId).css("display", "block");  // 선택된 카테고리 보이기
-	            $(".category_" + categoryId + " dd").css("display", "block");  // 해당 카테고리의 dd도 표시
-	            $(".category_" + categoryId + " dl").css("display", "block"); // 선택된 카테고리의 dl 표시
-	            $(".category_" + categoryId + " .coffeeInfo").css("display", "block"); // 선택된 카테고리의 영양정보 테이블도 표시
-	         });
-	      }
-	   }
+								// 필터에 맞는 음료와 카테고리만 표시
+								$(".menuDataSet")
+										.each(
+												function() {
+													const isNew = $(this).attr(
+															"new") === "Y"; // 신규 메뉴 여부
+													const isSeason = $(this)
+															.attr("season") === "Y"; // 시즌성 메뉴 여부
+													const categoryId = $(this)
+															.closest("dl")
+															.attr("class")
+															.split("_")[1]; // 해당 음료의 카테고리 ID
 
-	   // 체크박스 클릭 시 동작
-	   checkboxes.forEach(function(checkbox) {
-	      checkbox.addEventListener('change', function() {
-	         if (checkbox.id === 'product_0' && checkbox.checked) {
-	            // '전체상품보기' 체크박스가 선택되었을 때: 다른 모든 체크박스를 해제하고 모든 카테고리 표시
-	            checkboxes.forEach(function(box) {
-	               if (box.id !== 'product_0') {
-	                  box.checked = false;
-	               }
-	            });
-	            applyCategoryFilter();  // 필터 적용
-	         } else {
-	            // '전체상품보기' 체크박스를 해제하고, 선택된 카테고리만 표시
-	            allCheckbox.checked = false;  // '전체상품보기' 체크박스를 해제
-	            applyCategoryFilter();
-	         }
-	      });
-	   });
+													// 카테고리가 선택되었으면 해당 카테고리 내에서만 상세분류 조건 적용
+													if (categoryFilters.length === 0
+															|| categoryFilters
+																	.includes(categoryId)) {
+														// 신규 또는 시즌성 중 하나라도 조건을 만족하면 해당 음료와 카테고리 표시
+														if ((isNewChecked && isNew)
+																|| (isSeasonChecked && isSeason)
+																|| (!isNewChecked && !isSeasonChecked)) {
+															$(this).css(
+																	"display",
+																	"block"); // 해당 음료 표시
+															$(this).closest(
+																	"dl").css(
+																	"display",
+																	"block"); // 해당 음료가 속한 카테고리 표시
+															$(
+																	".product_list dd dl")
+																	.css(
+																			"display",
+																			"block");
+														}
+													}
+												});
+							}
 
-	   // 페이지 로드 시 기본적으로 모든 카테고리를 표시
-	   applyCategoryFilter();
-	});
-</script>
+							// 선택된 카테고리에 맞게 음료 목록 및 영양 정보 필터링
+							function applyCategoryFilter() {
+								const isNewChecked = $("#select_kind1-1").is(
+										":checked");
+								const isSeasonChecked = $("#select_kind1-2")
+										.is(":checked");
+
+								// 상세분류가 체크되어 있지 않으면 카테고리 필터 적용
+								if (!isNewChecked && !isSeasonChecked) {
+									// '전체상품보기' 체크박스가 선택되어 있는지 확인
+									if ($("#product_0").is(":checked")) {
+										// 전체 상품 보기가 선택된 경우 모든 음료 표시
+										$(".product_list dl").css("display",
+												"block");
+										$(".product_list dd").css("display",
+												"block");
+										$(".menuDataSet").css("display",
+												"block");
+									} else {
+										// 모든 음료 숨기기
+										$(".product_list dl").css("display",
+												"none");
+										$(".product_list dd").css("display",
+												"none");
+										$(".menuDataSet")
+												.css("display", "none");
+
+										// 선택된 카테고리만 보이게 함
+										$(".product_select_wrap input:checkbox:checked").each(function() {
+											let categoryId = $(this).attr("id").split("_")[1];
+										$(".category_"+ categoryId).css("display","block"); 
+										$(".category_"+ categoryId+ " dd").css("display","block");
+										$(".category_"+ categoryId+ " dl").css("display","block");
+										$(".category_"+ categoryId+ " .menuDataSet").css("display","block"); 
+									});
+									}
+								}
+							}
+
+							// 체크박스 클릭 시 동작
+							checkboxes.forEach(function(checkbox) {
+								checkbox.addEventListener('change', function() {
+									if (checkbox.id === 'product_0'
+											&& checkbox.checked) {
+										checkboxes.forEach(function(box) {
+											if (box.id !== 'product_0') {
+												box.checked = false;
+											}
+										});
+										filterProducts(); // 전체 상품 보기 필터 적용
+									} else {
+										allCheckbox.checked = false;
+										filterProducts(); // 개별 체크 필터 적용
+									}
+								});
+							});
+
+							// 페이지 로드 시 기본적으로 모든 카테고리를 표시
+							filterProducts();
+						});
+	</script>
 
 
 	<script src="../common/js/menu/patch4sm.js"></script>

@@ -24,6 +24,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<mapper resource="mybatis/mappers/VocMapper.xml" />
 		<mapper resource="mybatis/mappers/CommonMapper.xml" />
-
+		<mapper resource="mybatis/mappers/DrinkMapper.xml" />
 	</mappers>
 </configuration>
