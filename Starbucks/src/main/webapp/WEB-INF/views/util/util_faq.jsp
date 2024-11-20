@@ -138,8 +138,10 @@
 	<jsp:include page="../common/header.jsp" />
 	
 <div id="container">
+
 				<!-- 서브 타이틀 -->
 				<header class="ms_sub_tit_wrap">
+				
 					<div class="ms_sub_tit_bg">
 						<div class="ms_sub_tit_inner">
 							<h4><img alt="자주 하는 질문" src="https://image.istarbucks.co.kr/common/img/util/csi/faq_tit.png?v=210823"></h4> <!-- 20210823 수정 -->
@@ -148,20 +150,30 @@
 								<li><img class="arrow" src="//image.istarbucks.co.kr/common/img/common/icon_arrow_w.png" alt="하위메뉴"></li>
 								<li><a href="/util/index.do"><span class="en">Customer Service &amp; Ideas</span></a></li>
 								<li><img class="arrow" src="//image.istarbucks.co.kr/common/img/common/icon_arrow_w.png" alt="하위메뉴"></li>
-								<li><a href="/util/faq.do">자주 하는 질문</a></li> <!-- 20210809 수정 -->
+								<li><a href="/util/faq.do">자주 하는 질문</a></li><!-- 20210809 수정 -->
+								
 							</ul>
 						</div>
 					</div>
 				</header>
+				
+				
+				
+				
+				
 				<!-- 서브 타이틀 end -->
 				<!-- 내용 -->
 				<div class="ms_cont_wrap">
 					<!-- ms_cont -->
 					<div class="ms_cont">
 						<div class="csi_faq_vis">
-							<p><img class="w_pic" src="https://image.istarbucks.co.kr/common/img/util/csi/faq_vis.png?v=210818" alt="고객님들께서 가장 많이 묻는 질문을 모두 모았습니다. 검색을 통해 궁금한 사항을 빠르게 찾아보세요."><img class="m_pic" src="https://image.istarbucks.co.kr/common/img/util/csi/m_faq_vis.png?v=210818" alt="고객님들께서 가장 많이 묻는 질문을 모두 모았습니다. 검색을 통해 궁금한 사항을 빠르게 찾아보세요."></p> <!-- 20210809 수정 -->
-						</div>
+							<p style="display: inline;"><img class="w_pic" src="https://image.istarbucks.co.kr/common/img/util/csi/faq_vis.png?v=210818" alt="고객님들께서 가장 많이 묻는 질문을 모두 모았습니다. 검색을 통해 궁금한 사항을 빠르게 찾아보세요."><img class="m_pic" src="https://image.istarbucks.co.kr/common/img/util/csi/m_faq_vis.png?v=210818" alt="고객님들께서 가장 많이 묻는 질문을 모두 모았습니다. 검색을 통해 궁금한 사항을 빠르게 찾아보세요.">
+							</p> <!-- 20210809 수정 -->
+							</div>
 						<!-- 새 마크업 영역 -->
+							<!-- 네비 -->
+	                
+
                     <div class="faq_best10_area">
                         <strong class="tit">자주 하는 질문 Best 10</strong><!-- 20210809 수정 -->
                         <div class="faq_best10">
@@ -208,6 +220,7 @@
                             
                           </div>
                     </div>
+                    
                     <!-- //새 마크업 영역 -->
 						<div class="faq_pagination">
 							<ul class="pager"><li class=" active"><a href="javascript:void(0)">1</a></li><li class=""><a href="javascript:void(0)">2</a></li><li class=""><a href="javascript:void(0)">3</a></li><li class=""><a href="javascript:void(0)">4</a></li><li class=""><a href="javascript:void(0)">5</a></li><li class=""><a href="javascript:void(0)">6</a></li><li class=""><a href="javascript:void(0)">7</a></li><li class=""><a href="javascript:void(0)">8</a></li><li class=""><a href="javascript:void(0)">9</a></li><li class=""><a href="javascript:void(0)">10</a></li><li class="control"><a href="javascript:void(0)"><img alt="앞으로" src="//image.istarbucks.co.kr/common/img/util/ec/next.jpg"></a></li></ul>
@@ -222,9 +235,8 @@
 
 			
 					<!-- //ms_cont -->
-					<!-- 네비 -->
-	                
-<nav class="ms_nav" id="msRnb">
+				</div>
+				<nav class="ms_nav" id="msRnb">
 	<ul>
 		<li class="msRnb_btn"><a href="/util/faq.do">자주 하는 질문</a></li> <!-- 20210809 수정 -->
 		<li class="msRnb_btn"><a href="/customer/suggestionWrite.do">고객의 소리</a></li>
@@ -241,7 +253,8 @@
 		<li class="msRnb_btn"><a href="/util/guest_eReceipt.do">비회원 전자영수증 조회</a></li>
 		
 	</ul>
-</nav></div>
+</nav>
+					
 	                <!-- //네비 -->
 				</div>
 				<!-- 내용 end -->
