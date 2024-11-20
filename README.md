@@ -22,25 +22,23 @@
 
 ## 📝 ERD
 -ERD
-
+![starbucks Capy](https://github.com/user-attachments/assets/1c35696f-22b6-4131-b9bc-40bc2df94a26)
 
 ## 📄 기능 구현
-회원
-- 회원가입
 - 로그인/ 로그아웃
-- 게시글 작성 기능
-- 댓글, 답글 작성,수정,삭제 기능
+- 메안페이지 구현
+- 고객의 소리, 문의글 조회, 자주하는 질문 보기
+- 잘문중 매장 찾기 기능 및 음료 찾기 기능
 
 
 ## 💻 화면 구현
 - 메인 페이지
-![메인페이지](https://github.com/user-attachments/assets/1e2c3e53-7c4f-4d56-9aee-22976eabd7ec)
-- 회원가입 페이지
-  
-![회원가입](https://github.com/user-attachments/assets/899a0b79-4c56-4c7b-8594-1c84c5a4e94f)
-- 게시글 작성 페이지
-![게시글 작성](https://github.com/user-attachments/assets/d5370ef5-6d68-4011-ae65-dc4ec50820b8)
-- 댓글 작성 페이지
-![댓글 작성용](https://github.com/user-attachments/assets/e58889a9-c75f-4a5f-8386-2cfc17f6723b)
-
-
+![스타벅스 메인페이지](https://github.com/user-attachments/assets/821d90f9-2ea1-4793-9968-bc32ef564dc5)
+- 로그인 후 고객의 소리 ui
+![스타벅스 고객의 소리 로그인 처리](https://github.com/user-attachments/assets/918a4da6-80ca-4f60-81fd-57fc2c48b180)
+- 로그인 전 고객의 소리 ui
+![스타벅스 고객의 소리 로그인 하기 전](https://github.com/user-attachments/assets/dd8236b0-a214-49e7-9ebe-28b0e716a312) 
+- 고객의 소리 문의 중 매장 찾기
+![스타벅스 고객의 소리 매장 찾기](https://github.com/user-attachments/assets/273cd499-5827-4a07-83ab-b27c1300aedb)
+- 자주하는 질문 페이지
+![스타벅스 자주 하는 질문](https://github.com/user-attachments/assets/fc5f129b-d7c6-4189-a2ff-b8bc40895776)
